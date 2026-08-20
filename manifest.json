@@ -1,0 +1,21 @@
+{
+  "name": "KK PORTFOLIO",
+  "short_name": "KK PORTFOLIO",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#10b981",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/logo.jpg",
+      "type": "image/jpeg",
+      "sizes": "192x192"
+    },
+    {
+      "src": "assets/logo.jpg",
+      "type": "image/jpeg",
+      "sizes": "512x512"
+    }
+  ]
+}
