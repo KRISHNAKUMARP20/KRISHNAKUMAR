@@ -1493,7 +1493,14 @@ input, textarea { font-family: var(--font-display); }
   .projects-grid { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
   .achievements-grid { grid-template-columns: 1fr; }
-  .certs-grid { grid-template-columns: 1fr; }
+  .certs-slider-wrapper { display: block; }
+  .certs-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow-x: visible;
+  }
+  .cert-card { width: 100%; flex: none; }
+  .slider-btn { display: none; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .contact-form { padding: 24px; }
 
