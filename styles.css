@@ -1587,13 +1587,13 @@ input, textarea { font-family: var(--font-display); }
   .about-grid { grid-template-columns: 1fr; }
   .about-bio { padding: 28px; }
   .bio-details { grid-template-columns: 1fr; }
-  .projects-slider-wrapper, .certs-slider-wrapper, .skills-slider-wrapper, .experience-slider-wrapper { display: block; }
-  .projects-slider-grid, .certs-grid, .skills-slider-grid, .experience-slider-grid {
+  .projects-slider-wrapper, .certs-slider-wrapper { display: block; }
+  .projects-slider-grid, .certs-grid {
     display: grid;
     grid-template-columns: 1fr;
     overflow-x: visible;
   }
-  .projects-slider-grid .project-card, .cert-card, .skills-category-card, .experience-card { width: 100%; flex: none; }
+  .projects-slider-grid .project-card, .cert-card { width: 100%; flex: none; }
   .skills-grid { grid-template-columns: 1fr; }
   .achievements-grid { grid-template-columns: 1fr; }
   .certs-slider-wrapper { display: block; }
