@@ -1,10 +1,10 @@
-const CACHE_NAME = 'kk-portfolio-cache-v4';
+const CACHE_NAME = 'kk-portfolio-cache-v5';
 const assets = [
   '/',
   '/index.html',
   '/styles.css',
   '/script.js',
-  '/assets/logo.jpg',
+  '/assets/logo.svg',
   '/assets/profiles.png'
 ];
 

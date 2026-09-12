@@ -8,14 +8,19 @@
   "orientation": "portrait",
   "icons": [
     {
-      "src": "assets/logo.jpg",
-      "type": "image/jpeg",
+      "src": "assets/logo.svg",
+      "type": "image/svg+xml",
       "sizes": "192x192"
     },
     {
-      "src": "assets/logo.jpg",
-      "type": "image/jpeg",
+      "src": "assets/logo.svg",
+      "type": "image/svg+xml",
       "sizes": "512x512"
+    },
+    {
+      "src": "assets/logo.svg",
+      "type": "image/svg+xml",
+      "sizes": "any"
     }
   ]
 }

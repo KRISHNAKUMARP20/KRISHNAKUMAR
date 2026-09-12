@@ -9,12 +9,12 @@
   <meta name="keywords" content="Krishna Kumar, IT Student, Web Designer, Software Designer, Portfolio" />
   <meta name="author" content="Krishna Kumar" />
   <title>KK PORTFOLIO</title>
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg" />
   <link rel="manifest" href="manifest.json" />
   <meta name="theme-color" content="#10b981" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="apple-touch-icon" href="assets/logo.svg" />
+  <link rel="apple-touch-icon" href="assets/logo.jpg" />
 
   <link rel="stylesheet" href="styles.css?v=36d418e" />
 
@@ -34,19 +34,8 @@
 
   <!-- ========== LOADING SCREEN ========== -->
   <div id="loader">
-    <div class="globe-container" id="accessBox">
-      <div class="css-globe">
-        <div class="globe-ring"></div>
-        <div class="globe-ring"></div>
-        <div class="globe-ring"></div>
-        <div class="globe-core"></div>
-        <div class="hud-element hud-top-left">[SYS.OK]</div>
-        <div class="hud-element hud-bottom-right">V.1.0</div>
-      </div>
-      <div class="access-content">
-        <h1 class="access-title-main glitch-effect" id="accessTitle" data-text="KK DIGITAL WORLD">KK<br>DIGITAL WORLD</h1>
-        <p class="access-instruction" id="accessInstruction">[ TAP ANYWHERE TO ENTER ]</p>
-      </div>
+    <div class="access-box" id="accessBox">
+      <div class="access-indicator" id="accessText">KK Loading...</div>
     </div>
   </div>
 
@@ -57,7 +46,7 @@
     <div class="nav-brand" style="display: flex; align-items: center; gap: 8px;">
       <img src="assets/profiles.png?v=4" alt="KK Profile"
         style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-cyan);" />
-      <span style="font-weight: 700; letter-spacing: 0.5px; font-size: 1.1rem; color: #fff;">KK DIGITAL WORLD</span>
+      <span style="font-weight: 700; letter-spacing: 0.5px; font-size: 1.1rem; color: #fff;">KK PORTFOLIO</span>
     </div>
     <ul class="nav-links" id="navLinks">
       <li><a href="#hero" class="nav-link active">Home</a></li>
@@ -164,57 +153,97 @@
         <h2 class="section-title">Technical <span class="accent">Skills</span></h2>
         <div class="section-line"></div>
       </div>
-      <div class="skills-slider-wrapper">
-        <button class="slider-btn" id="skillSlideLeft" aria-label="Slide Left"><i class='bx bx-chevron-left'></i></button>
-        <div class="skills-slider-grid" id="skillsGrid">
-          <!-- Programming -->
-          <div class="skills-category-card glass reveal">
-            <div class="skills-category-icon" style="margin-bottom: 15px;"><i class='bx bx-code-alt'></i></div>
-            <h3 class="skills-category-title" style="margin-bottom: 20px;">Programming</h3>
-            <div class="skills-pill-list">
-              <span class="skill-pill">Java</span>
-              <span class="skill-pill">C</span>
+      <div class="skills-marquee-wrapper reveal">
+        <div class="skills-marquee">
+          <div class="skills-track">
+            <!-- Programming -->
+            <div class="skill-logo-card glass" data-tooltip="Java">
+              <i class='bx bxl-java'></i>
             </div>
-          </div>
-          <!-- Web Technologies -->
-          <div class="skills-category-card glass reveal">
-            <div class="skills-category-icon" style="margin-bottom: 15px;"><i class='bx bx-globe'></i></div>
-            <h3 class="skills-category-title" style="margin-bottom: 20px;">Web Technologies</h3>
-            <div class="skills-pill-list">
-              <span class="skill-pill">HTML</span>
-              <span class="skill-pill">CSS</span>
-              <span class="skill-pill">JavaScript</span>
+            <div class="skill-logo-card glass" data-tooltip="C">
+              <i class='bx bx-code'></i>
             </div>
-          </div>
-          <!-- Database -->
-          <div class="skills-category-card glass reveal">
-            <div class="skills-category-icon" style="margin-bottom: 15px;"><i class='bx bx-data'></i></div>
-            <h3 class="skills-category-title" style="margin-bottom: 20px;">Database</h3>
-            <div class="skills-pill-list">
-              <span class="skill-pill">MySQL</span>
-              <span class="skill-pill">MariaDB</span>
-              <span class="skill-pill">MongoDB</span>
+            
+            <!-- Web Technologies -->
+            <div class="skill-logo-card glass" data-tooltip="HTML5">
+              <i class='bx bxl-html5'></i>
             </div>
-          </div>
-          <!-- Operating Systems -->
-          <div class="skills-category-card glass reveal">
-            <div class="skills-category-icon" style="margin-bottom: 15px;"><i class='bx bxl-tux'></i></div>
-            <h3 class="skills-category-title" style="margin-bottom: 20px;">Operating Systems</h3>
-            <div class="skills-pill-list">
-              <span class="skill-pill">Linux (Ubuntu, Parrot, Kali)</span>
+            <div class="skill-logo-card glass" data-tooltip="CSS3">
+              <i class='bx bxl-css3'></i>
             </div>
-          </div>
-          <!-- Tools -->
-          <div class="skills-category-card glass reveal">
-            <div class="skills-category-icon" style="margin-bottom: 15px;"><i class='bx bx-cog'></i></div>
-            <h3 class="skills-category-title" style="margin-bottom: 20px;">Tools</h3>
-            <div class="skills-pill-list">
-              <span class="skill-pill">Git</span>
-              <span class="skill-pill">GitHub</span>
+            <div class="skill-logo-card glass" data-tooltip="JavaScript">
+              <i class='bx bxl-javascript'></i>
+            </div>
+
+            <!-- Database -->
+            <div class="skill-logo-card glass" data-tooltip="MySQL">
+              <i class='bx bxs-data'></i>
+            </div>
+            <div class="skill-logo-card glass" data-tooltip="MariaDB">
+              <i class='bx bx-data'></i>
+            </div>
+            <div class="skill-logo-card glass" data-tooltip="MongoDB">
+              <i class='bx bxl-mongodb'></i>
+            </div>
+
+            <!-- Operating Systems -->
+            <div class="skill-logo-card glass" data-tooltip="Linux">
+              <i class='bx bxl-tux'></i>
+            </div>
+
+            <!-- Tools -->
+            <div class="skill-logo-card glass" data-tooltip="Git">
+              <i class='bx bxl-git'></i>
+            </div>
+            <div class="skill-logo-card glass" data-tooltip="GitHub">
+              <i class='bx bxl-github'></i>
+            </div>
+            
+            <!-- Duplicated for infinite scroll effect -->
+            <!-- Programming -->
+            <div class="skill-logo-card glass" data-tooltip="Java">
+              <i class='bx bxl-java'></i>
+            </div>
+            <div class="skill-logo-card glass" data-tooltip="C">
+              <i class='bx bx-code'></i>
+            </div>
+            
+            <!-- Web Technologies -->
+            <div class="skill-logo-card glass" data-tooltip="HTML5">
+              <i class='bx bxl-html5'></i>
+            </div>
+            <div class="skill-logo-card glass" data-tooltip="CSS3">
+              <i class='bx bxl-css3'></i>
+            </div>
+            <div class="skill-logo-card glass" data-tooltip="JavaScript">
+              <i class='bx bxl-javascript'></i>
+            </div>
+
+            <!-- Database -->
+            <div class="skill-logo-card glass" data-tooltip="MySQL">
+              <i class='bx bxs-data'></i>
+            </div>
+            <div class="skill-logo-card glass" data-tooltip="MariaDB">
+              <i class='bx bx-data'></i>
+            </div>
+            <div class="skill-logo-card glass" data-tooltip="MongoDB">
+              <i class='bx bxl-mongodb'></i>
+            </div>
+
+            <!-- Operating Systems -->
+            <div class="skill-logo-card glass" data-tooltip="Linux">
+              <i class='bx bxl-tux'></i>
+            </div>
+
+            <!-- Tools -->
+            <div class="skill-logo-card glass" data-tooltip="Git">
+              <i class='bx bxl-git'></i>
+            </div>
+            <div class="skill-logo-card glass" data-tooltip="GitHub">
+              <i class='bx bxl-github'></i>
             </div>
           </div>
         </div>
-        <button class="slider-btn" id="skillSlideRight" aria-label="Slide Right"><i class='bx bx-chevron-right'></i></button>
       </div>
     </div>
   </section>
@@ -261,45 +290,38 @@
   </section>
 
   <!-- ========== EXPERIENCE SECTION ========== -->
-    <section class="section" id="experience">
+  <section class="section" id="experience">
     <div class="container">
       <div class="section-header reveal">
         <p class="section-eyebrow">Professional Pathway</p>
         <h2 class="section-title">Work <span class="accent">Experience</span></h2>
         <div class="section-line"></div>
       </div>
-      <div class="experience-slider-wrapper">
-        <button class="slider-btn" id="expSlideLeft" aria-label="Slide Left"><i class='bx bx-chevron-left'></i></button>
-        <div class="experience-slider-grid" id="expGrid">
-          <!-- Experience 1 -->
-          <div class="experience-card glass reveal">
-            <div class="exp-header">
-              <div class="exp-icon"><i class='bx bx-shield-quarter'></i></div>
-              <div class="exp-title">
-                <h3>Cyber Security Intern</h3>
-                <p class="exp-subtitle">kaashiv InfoTech</p>
-              </div>
-            </div>
-            <span class="exp-date">June 2026 – July 2026</span>
-            <p class="exp-desc">Gained hands-on experience in security analysis and Unix/Linux system administration. Worked extensively with Linux commands, log auditing, network monitoring, and script automation.</p>
-            <a href="assets/cyber security.pdf" target="_blank" class="exp-link" style="text-decoration: none; cursor: pointer;">Go to Certificate <i class='bx bx-right-arrow-alt'></i></a>
-          </div>
-
-          <!-- Experience 2 -->
-          <div class="experience-card glass reveal">
-            <div class="exp-header">
-              <div class="exp-icon"><i class='bx bx-laptop'></i></div>
-              <div class="exp-title">
-                <h3>Web Development Intern</h3>
-                <p class="exp-subtitle">iStudio Technologies</p>
-              </div>
-            </div>
-            <span class="exp-date">December 2025 – January 2026</span>
-            <p class="exp-desc">Contributed to building and optimizing responsive, high-performance web applications. Collaborated on UI/UX improvements using HTML, CSS, JavaScript, and web design concepts.</p>
-            <a href="assets/web design certificates.pdf" target="_blank" class="exp-link" style="text-decoration: none; cursor: pointer;">Go to Certificate <i class='bx bx-right-arrow-alt'></i></a>
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass" onclick="window.open('assets/cyber security.pdf', '_blank')"
+            style="cursor: pointer;">
+            <span class="timeline-date">June 2026 – July 2026</span>
+            <h3>Cyber Security Intern</h3>
+            <p class="timeline-subtitle">kaashiv InfoTech (Internship)</p>
+            <p>Gained hands-on experience in security analysis and Unix/Linux system administration. Worked extensively
+              with Linux commands, command-line utilities, log auditing, network monitoring, and script automation to
+              identify and mitigate potential system vulnerabilities. (Click to view certificate)</p>
           </div>
         </div>
-        <button class="slider-btn" id="expSlideRight" aria-label="Slide Right"><i class='bx bx-chevron-right'></i></button>
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content glass" onclick="window.open('assets/web design certificates.pdf', '_blank')"
+            style="cursor: pointer;">
+            <span class="timeline-date">December 2025 – January 2026</span>
+            <h3>Web Development Intern</h3>
+            <p class="timeline-subtitle">iStudio Technologies (Internship)</p>
+            <p>Contributed to building and optimizing responsive, high-performance web applications. Collaborated on
+              UI/UX improvements using HTML, CSS, JavaScript, and web design concepts to deliver clean and engaging user
+              interfaces. (Click to view certificate)</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -315,151 +337,146 @@
       <div class="projects-slider-wrapper">
         <button class="slider-btn" id="projectSlideLeft" aria-label="Slide Left"><i class='bx bx-chevron-left'></i></button>
         <div class="projects-slider-grid" id="projectsGrid">
-
           <!-- Project: JARVIS -->
-          <div class="project-card glass reveal">
+          <div class="project-card glass reveal" onclick="window.open('https://kkjarvis.netlify.app', '_blank')"
+            style="cursor: pointer;">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500&q=80" class="project-image-img" alt="JARVIS">
+              <div class="project-image-placeholder" style="--proj-color: #06b6d4;">
+                <i class="fas fa-robot"></i>
+              </div>
             </div>
             <div class="project-info">
               <h3 class="project-name">JARVIS</h3>
-              <p class="project-desc">An AI-powered voice assistant capable of answering queries and performing tasks.</p>
+              <p class="project-desc">An AI-powered voice assistant capable of answering queries and performing tasks. (Click to visit site)</p>
               <div class="project-tech">
                 <span>AI</span>
                 <span>Voice</span>
                 <span>Assistant</span>
               </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/JARVIS" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kkjarvis.netlify.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
             </div>
           </div>
 
           <!-- Project: AI Document Verification -->
-          <div class="project-card glass reveal">
+          <div class="project-card glass reveal" onclick="window.open('https://kkaidocumentverify.vercel.app', '_blank')"
+            style="cursor: pointer;">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=500&q=80" class="project-image-img" alt="AI Doc Verify">
+              <div class="project-image-placeholder" style="--proj-color: #ef4444;">
+                <i class="fas fa-file-signature"></i>
+              </div>
             </div>
             <div class="project-info">
               <h3 class="project-name">AI Document Verification</h3>
-              <p class="project-desc">A smart tool for verifying and analyzing documents using artificial intelligence.</p>
+              <p class="project-desc">A smart tool for verifying and analyzing documents using artificial intelligence. (Click to visit site)</p>
               <div class="project-tech">
                 <span>AI</span>
                 <span>Verification</span>
                 <span>Security</span>
               </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/AI-Document-Verification" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kkaidocumentverify.vercel.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
             </div>
           </div>
 
-          <!-- Project: Account Monitor -->
-          <div class="project-card glass reveal">
+          <!-- Project 1 -->
+          <div class="project-card glass reveal" onclick="window.open('https://accmonitor.vercel.app', '_blank')"
+            style="cursor: pointer;">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&q=80" class="project-image-img" alt="Account Monitor">
+              <div class="project-image-placeholder" style="--proj-color: #3b82f6;">
+                <i class="fas fa-shield-alt"></i>
+              </div>
             </div>
             <div class="project-info">
               <h3 class="project-name">Account Monitor</h3>
-              <p class="project-desc">A web application designed to check if social media accounts have been compromised or leaked online. Provides reports.</p>
+              <p class="project-desc">A web application designed to check if social media accounts have been compromised
+                or leaked online. Provides reports. (Click to visit site)</p>
               <div class="project-tech">
                 <span>Security</span>
                 <span>API</span>
                 <span>React</span>
               </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/ACCMONITOR" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://accmonitor.vercel.app/" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
             </div>
           </div>
 
-          <!-- Project: KK Hotel Booking -->
-          <div class="project-card glass reveal">
+          <!-- Project 2 -->
+          <div class="project-card glass reveal" onclick="window.open('https://kk-hotel.vercel.app', '_blank')"
+            style="cursor: pointer;">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" class="project-image-img" alt="KK Hotel Booking">
+              <div class="project-image-placeholder" style="--proj-color: #8b5cf6;">
+                <i class="fas fa-hotel"></i>
+              </div>
             </div>
             <div class="project-info">
               <h3 class="project-name">KK Hotel Booking</h3>
-              <p class="project-desc">A full-featured booking client covering hotels across India with search, filter, and reservation flows.</p>
+              <p class="project-desc">A full-featured booking client covering hotels across India with search, filter, and
+                reservation flows. (Click to visit site)</p>
               <div class="project-tech">
                 <span>Booking</span>
                 <span>React</span>
                 <span>Tailwind</span>
               </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/KK-hotel" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kk-hotel.vercel.app/" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
             </div>
           </div>
 
-          <!-- Project: KK Smart Cab -->
-          <div class="project-card glass reveal">
+          <!-- Project 3 -->
+          <div class="project-card glass reveal" onclick="window.open('https://kk-smart-cab.vercel.app', '_blank')"
+            style="cursor: pointer;">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1490604001847-b712b0c2f967?w=500&q=80" class="project-image-img" alt="KK Smart Cab">
+              <div class="project-image-placeholder" style="--proj-color: #10b981;">
+                <i class="fas fa-car"></i>
+              </div>
             </div>
             <div class="project-info">
               <h3 class="project-name">KK Smart Cab</h3>
-              <p class="project-desc">An interactive taxi booking client supporting quick routing calculations and route visualization maps.</p>
+              <p class="project-desc">An interactive taxi booking client supporting quick routing calculations and route
+                visualization maps. (Click to visit site)</p>
               <div class="project-tech">
                 <span>Maps</span>
                 <span>React</span>
                 <span>API</span>
               </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/KK-CAB" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kk-smart-cab.vercel.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
             </div>
           </div>
 
-          <!-- Project: KK CHILD WEB -->
-          <div class="project-card glass reveal">
+          <!-- Project 4 -->
+          <div class="project-card glass reveal" onclick="window.open('https://kkweb-one.vercel.app', '_blank')"
+            style="cursor: pointer;">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=500&q=80" class="project-image-img" alt="Child Web">
+              <div class="project-image-placeholder" style="--proj-color: #f59e0b;">
+                <i class="fas fa-child"></i>
+              </div>
             </div>
             <div class="project-info">
               <h3 class="project-name">KK CHILD WEB</h3>
-              <p class="project-desc">A cheerful and engaging web experience created for children to learn, explore, and enjoy.</p>
+              <p class="project-desc">A cheerful and engaging web experience created for children to learn, explore, and enjoy. (Click to visit site)</p>
               <div class="project-tech">
                 <span>Education</span>
                 <span>Web Design</span>
                 <span>Interactive</span>
               </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/KK-CHILD-WEB" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kkweb-one.vercel.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
             </div>
           </div>
 
-          <!-- Project: KK GUESS NUMBER -->
-          <div class="project-card glass reveal">
+          <!-- Project 5 -->
+          <div class="project-card glass reveal" onclick="window.open('https://kkguess.vercel.app', '_blank')"
+            style="cursor: pointer;">
             <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=500&q=80" class="project-image-img" alt="Guess Number">
+              <div class="project-image-placeholder" style="--proj-color: #ec4899;">
+                <i class="fas fa-dice"></i>
+              </div>
             </div>
             <div class="project-info">
               <h3 class="project-name">KK GUESS NUMBER</h3>
-              <p class="project-desc">A fun number-guessing game that challenges players to find the hidden number with interactive feedback.</p>
+              <p class="project-desc">A fun number-guessing game that challenges players to find the hidden number with interactive feedback. (Click to visit site)</p>
               <div class="project-tech">
                 <span>Game</span>
                 <span>JavaScript</span>
                 <span>Interactive</span>
               </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/KK-NUMBER-GUESS" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kkguess.vercel.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
             </div>
           </div>
-
         </div>
         <button class="slider-btn" id="projectSlideRight" aria-label="Slide Right"><i class='bx bx-chevron-right'></i></button>
       </div>
     </div>
+
   </section>
 
   <!-- ========== ACHIEVEMENTS SECTION ========== -->
@@ -475,112 +492,113 @@
           style="cursor: pointer; max-width: 400px; width: 100%;">
           <div class="achievement-icon"><i class='bx bx-code-alt'></i></div>
           <h3>Mr.Coder — EKNA '25</h3>
-          <p>Participated in the "Mr. Coder" coding event at the EKNA '25 National Level Techno Cultural Fest held at K.S.R College of Engineering.</p>
+          <p>Participated in the "Mr. Coder" coding event at the EKNA '25 National Level Techno Cultural Fest held at
         </div>
       </div>
-    </div>
   </section>
 
   <!-- ========== CERTS SECTION ========== -->
   <section class="section" id="certs">
     <div class="container">
       <div class="section-header reveal">
-        <p class="section-eyebrow">My Credentials</p>
-        <h2 class="section-title">Professional <span class="accent">Certifications</span></h2>
+        <p class="section-eyebrow">Credentials</p>
+        <h2 class="section-title">Certifications & <span class="accent">Certs</span></h2>
         <div class="section-line"></div>
       </div>
       <div class="certs-slider-wrapper">
         <button class="slider-btn" id="slideLeft" aria-label="Slide Left"><i class='bx bx-chevron-left'></i></button>
         <div class="certs-grid" id="certsGrid">
-          
-          <!-- Cert 1 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/Gemini Certification.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-bot'></i></div>
-            <h3>GEMINI CERTIFICATE</h3>
-            <p>Certified in understanding and applying Google's advanced Gemini AI models, tools, and capabilities.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 2 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/CISCO Cyber_Threat_Management.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-shield'></i></div>
-            <h3>CISCO Cyber Threat Management</h3>
-            <p>In-depth training on cyber threat landscapes, threat intelligence, and modern security operations.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 3 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/CISCO Network_Defense.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-network-chart'></i></div>
-            <h3>CISCO Network Defense</h3>
-            <p>Comprehensive certification covering network security architecture, vulnerability assessment, and defense strategies.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 4 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/IBM PY0101EN .pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bxl-python'></i></div>
-            <h3>IBM Python for Data Science</h3>
-            <p>Cognitive Class training covering Python programming basics, data structures, and data science libraries.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 5 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/Introduction to Internet of Things 4.0.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-chip'></i></div>
-            <h3>Introduction to IoT 4.0</h3>
-            <p>Advanced NPTEL program focused on Industrial IoT (IIoT), smart factory concepts, and cyber-physical systems.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 6 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/Introduction to Internet of Things.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-server'></i></div>
-            <h3>Introduction to IoT</h3>
-            <p>NPTEL certification highlighting the foundation of IoT architecture, sensor networking, and smart nodes.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 7 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/bano job ready communication.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-message-rounded-dots'></i></div>
+          <!-- Card 1 -->
+          <div class="cert-card glass reveal"
+            onclick="window.open('assets/bano job ready communication.pdf', '_blank')">
+            <div class="cert-icon"><i class='bx bx-conversation'></i></div>
             <h3>Bano Job Ready Communication</h3>
             <p>Professional workspace communication training, presentation skills, and business correspondence.</p>
             <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
           </div>
-          
-          <!-- Cert 8 -->
+
+          <!-- Card 2 -->
           <div class="cert-card glass reveal" onclick="window.open('assets/bano job ready.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-briefcase-alt-2'></i></div>
+            <div class="cert-icon"><i class='bx bx-briefcase'></i></div>
             <h3>Bano Job Ready</h3>
-            <p>Career training program mapping essential job readiness skills, interview preparation, and professional ethics.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 9 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/skillup learn cyber security.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-check-shield'></i></div>
-            <h3>SkillUp Learn Cyber Security</h3>
-            <p>Essential course covering security principles, network scanning, firewalls, and cryptography concepts.</p>
+            <p>Career training program mapping essential job readiness skills, interview preparation, and professional
+              ethics.</p>
             <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
           </div>
 
-          <!-- Cert 10 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/data science IBM.jpeg', '_blank')">
-            <div class="cert-icon"><i class='bx bx-bar-chart-alt-2'></i></div>
-            <h3>IBM Data Science</h3>
-            <p>Comprehensive certification covering data analysis, visualization, and machine learning methodologies.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-
-          <!-- Cert 11 -->
+          <!-- Card 3 -->
           <div class="cert-card glass reveal" onclick="window.open('assets/BE10XAI.png', '_blank')">
-            <div class="cert-icon"><i class='bx bx-brain'></i></div>
-            <h3>BE10X AI Workshop</h3>
-            <p>Certification of participation in advanced AI tools workshop for productivity and automation.</p>
+            <div class="cert-icon"><i class='bx bx-bot'></i></div>
+            <h3>BE10X AI</h3>
+            <p>Professional workshop covering generative AI tools to double productivity, automate tasks, and optimize
+              workflows.</p>
             <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
           </div>
 
+          <!-- Card 4 -->
+          <div class="cert-card glass reveal" onclick="window.open('assets/CISCO Network_Defense.pdf', '_blank')">
+            <div class="cert-icon"><i class='bx bx-shield-quarter'></i></div>
+            <h3>CISCO Network Defense</h3>
+            <p>Comprehensive certification covering network security architecture, vulnerability assessment, and defense
+              strategies.</p>
+            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="cert-card glass reveal"
+            onclick="window.open('assets/CISCO Cyber_Threat_Management.pdf', '_blank')">
+            <div class="cert-icon"><i class='bx bx-error-alt'></i></div>
+            <h3>CISCO Cyber Threats Management</h3>
+            <p>In-depth training on cyber threat landscapes, threat intelligence, and modern security operations.</p>
+            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="cert-card glass reveal" onclick="window.open('assets/data science IBM.jpeg', '_blank')">
+            <div class="cert-icon"><i class='bx bx-analyse'></i></div>
+            <h3>Data Science IBM</h3>
+            <p>Foundation of data science tools, methodologies, and analysis algorithms using IBM standards.</p>
+            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
+          </div>
+
+          <!-- Card 7 -->
+          <div class="cert-card glass reveal" onclick="window.open('assets/IBM PY0101EN .pdf', '_blank')">
+            <div class="cert-icon"><i class='bx bxl-python'></i></div>
+            <h3>IBM PY010EN</h3>
+            <p>Cognitive Class training covering Python programming basics, data structures, and data science libraries.
+            </p>
+            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
+          </div>
+
+          <!-- Card 8 -->
+          <div class="cert-card glass reveal"
+            onclick="window.open('assets/Introduction to Internet of Things.pdf', '_blank')">
+            <div class="cert-icon"><i class='bx bx-chip'></i></div>
+            <h3>Introduction of IoT</h3>
+            <p>NPTEL certification highlighting the foundation of IoT architecture, sensor networking, and smart nodes.
+            </p>
+            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
+          </div>
+
+          <!-- Card 9 -->
+          <div class="cert-card glass reveal"
+            onclick="window.open('assets/Introduction to Internet of Things 4.0.pdf', '_blank')">
+            <div class="cert-icon"><i class='bx bx-broadcast'></i></div>
+            <h3>Introduction of IoT 4.0</h3>
+            <p>Advanced NPTEL program focused on Industrial IoT (IIoT), smart factory concepts, and cyber-physical
+              systems.</p>
+            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
+          </div>
+
+          <!-- Card 10 -->
+          <div class="cert-card glass reveal"
+            onclick="window.open('assets/skillup learn cyber security.pdf', '_blank')">
+            <div class="cert-icon"><i class='bx bx-lock-alt'></i></div>
+            <h3>SkillUp Learn Cyber Security</h3>
+            <p>Essential course covering security principles, network scanning, firewalls, and cryptography concepts.
+            </p>
+            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
+          </div>
         </div>
         <button class="slider-btn" id="slideRight" aria-label="Slide Right"><i class='bx bx-chevron-right'></i></button>
       </div>
@@ -785,34 +803,6 @@
     </div>
   </div>
 
-
-  <!-- Slider Controls -->
-  <script>
-    function setupSlider(wrapperId, leftBtnId, rightBtnId) {
-      const wrapper = document.getElementById(wrapperId);
-      const leftBtn = document.getElementById(leftBtnId);
-      const rightBtn = document.getElementById(rightBtnId);
-      
-      if (!wrapper || !leftBtn || !rightBtn) return;
-      
-      const scrollAmount = 350; // amount to scroll per click
-      
-      leftBtn.addEventListener('click', () => {
-        wrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-      });
-      
-      rightBtn.addEventListener('click', () => {
-        wrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      });
-    }
-
-    // Initialize all sliders when DOM is ready
-    document.addEventListener('DOMContentLoaded', () => {
-      setupSlider('certsGrid', 'slideLeft', 'slideRight');
-      setupSlider('projectsGrid', 'projectSlideLeft', 'projectSlideRight');
-      setupSlider('expGrid', 'expSlideLeft', 'expSlideRight');
-    });
-  </script>
   <script src="script.js"></script>
   <script>
     if ('serviceWorker' in navigator) {

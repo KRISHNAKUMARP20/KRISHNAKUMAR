@@ -52,26 +52,48 @@ window.addEventListener('load', () => {
     } catch (e) {}
   };
 
-  // Phase 1: Shift to Access Granted display
-  setTimeout(() => {
-    if (accessBox && accessText) {
+  // Wait for user interaction to enter
+  if (loader && accessBox) {
+    // Mouse Parallax for Loader
+    loader.addEventListener('mousemove', (e) => {
+      if (accessBox.classList.contains('granted')) return;
+      const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+      const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+      accessBox.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+    });
+    
+    loader.addEventListener('mouseleave', () => {
+      if (!accessBox.classList.contains('granted')) {
+        accessBox.style.transform = `rotateY(0deg) rotateX(0deg)`;
+      }
+    });
+
+    loader.addEventListener('click', () => {
+      // Prevent multiple clicks
+      if (accessBox.classList.contains('granted')) return;
+      
+      // Phase 1: Shift to Access Granted display
       accessBox.classList.add('granted');
-      accessText.textContent = 'ACCESS GRANTED';
+      
+      const accessTitle = document.getElementById('accessTitle');
+      const accessInstruction = document.getElementById('accessInstruction');
+      
+      if (accessTitle) accessTitle.innerHTML = 'ACCESS<br>GRANTED';
+      if (accessInstruction) accessInstruction.style.display = 'none';
+
       playChimes();
       speakGranted();
-    }
-  }, 1000);
 
-  // Phase 2: Fade out loader
-  setTimeout(() => {
-    if (loader) {
-      loader.classList.add('hidden');
-    }
-    // Kick off hero reveals
-    document.querySelectorAll('.hero .reveal').forEach((el, i) => {
-      setTimeout(() => el.classList.add('visible'), 200 + i * 120);
+      // Phase 2: Fade out loader
+      setTimeout(() => {
+        loader.classList.add('hidden');
+        // Kick off hero reveals
+        document.querySelectorAll('.hero .reveal').forEach((el, i) => {
+          setTimeout(() => el.classList.add('visible'), 200 + i * 120);
+        });
+      }, 1500);
     });
-  }, 2200);
+  }
 });
 
 /* ── 2. PARTICLE CANVAS ─────────────────────────────────────── */
@@ -263,12 +285,26 @@ if (backToTopBtn) {
 /* ── 7. SCROLL REVEAL ───────────────────────────────────────── */
 (function initReveal() {
   const revealEls = document.querySelectorAll('.reveal');
+  
+  let staggerDelay = 0;
+  let revealTimeout = null;
 
   const io = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Don't unobserve — keeps state clean for re-scrolling
+        if (!entry.target.classList.contains('visible')) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, staggerDelay);
+          
+          staggerDelay += 150; // Stagger each element by 150ms
+          
+          // Reset stagger delay after a short pause in intersection events
+          clearTimeout(revealTimeout);
+          revealTimeout = setTimeout(() => {
+            staggerDelay = 0;
+          }, 300);
+        }
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
@@ -681,3 +717,53 @@ Context of Krishna Kumar:
     grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
   });
 })();
+
+/* ── 16. PROJECTS SLIDER CONTROL ── */
+(function initProjectsSlider() {
+  const grid = document.getElementById('projectsGrid');
+  const btnLeft = document.getElementById('projectSlideLeft');
+  const btnRight = document.getElementById('projectSlideRight');
+  
+  if (!grid || !btnLeft || !btnRight) return;
+
+  const scrollAmount = 378; // card width (350px) + gap (28px)
+
+  btnLeft.addEventListener('click', () => {
+    grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+
+  btnRight.addEventListener('click', () => {
+    grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+})();
+document.addEventListener('DOMContentLoaded', () => { const track = document.querySelector('.skills-track'); if (track) { track.innerHTML += track.innerHTML; } });
+
+// Skills Slider
+const skillSlideLeft = document.getElementById('skillSlideLeft');
+const skillSlideRight = document.getElementById('skillSlideRight');
+const skillsGrid = document.getElementById('skillsGrid');
+
+if (skillSlideLeft && skillSlideRight && skillsGrid) {
+  skillSlideLeft.addEventListener('click', () => {
+    skillsGrid.scrollBy({ left: -340, behavior: 'smooth' });
+  });
+
+  skillSlideRight.addEventListener('click', () => {
+    skillsGrid.scrollBy({ left: 340, behavior: 'smooth' });
+  });
+}
+
+// Experience Slider
+const expSlideLeft = document.getElementById('expSlideLeft');
+const expSlideRight = document.getElementById('expSlideRight');
+const experienceGrid = document.getElementById('experienceGrid');
+
+if (expSlideLeft && expSlideRight && experienceGrid) {
+  expSlideLeft.addEventListener('click', () => {
+    experienceGrid.scrollBy({ left: -470, behavior: 'smooth' });
+  });
+
+  expSlideRight.addEventListener('click', () => {
+    experienceGrid.scrollBy({ left: 470, behavior: 'smooth' });
+  });
+}

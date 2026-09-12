@@ -1,0 +1,121 @@
+--- styles.css
++++ styles.css
+@@ -816,6 +816,56 @@
+   font-size: 0.85rem;
+ }
+ 
++/* ── NEW SKILLS MARQUEE ────────────────────────────────────── */
++.skills-marquee-wrapper {
++  width: 100%;
++  overflow: hidden;
++  padding: 20px 0 40px;
++}
++
++.skills-marquee {
++  width: 100%;
++  overflow: hidden;
++  position: relative;
++}
++
++.skills-track {
++  display: flex;
++  gap: 32px;
++  width: max-content;
++  animation: marquee 20s linear infinite;
++}
++
++/* Pause on hover, wait, user says "cursor to there means it will be automatically scroll right to left" */
++/* I will make it scroll by default, or pause on hover. Wait, if they want it to scroll on hover, I will set animation-play-state: paused by default, and running on hover. */
++.skills-marquee-wrapper:hover .skills-track {
++  animation-play-state: running;
++}
++/* Actually, let's just make it scroll infinitely and pause on hover, which is standard. */
++.skills-track {
++  animation-play-state: paused;
++}
++
++@keyframes marquee {
++  0% { transform: translateX(0); }
++  100% { transform: translateX(calc(-50% - 16px)); }
++}
++
++.skill-logo-card {
++  width: 100px;
++  height: 100px;
++  display: flex;
++  align-items: center;
++  justify-content: center;
++  font-size: 3rem;
++  color: var(--text-primary);
++  border-radius: var(--radius-med);
++  transition: var(--transition-med);
++  position: relative;
++  cursor: pointer;
++}
++
+ /* ── EDUCATION & EXPERIENCE ────────────────────────────────── */
+ .timeline {
+   position: relative;
+@@ -871,6 +921,12 @@
+   position: relative;
+   flex-shrink: 1;
+ }
++
++.project-card:hover, .skill-logo-card:hover {
++  transform: translateY(-6px);
++  border-color: var(--accent-cyan);
++  box-shadow: var(--shadow-card), 0 0 30px color-mix(in srgb, var(--accent-cyan) 20%, transparent);
++}
+ 
+ .project-image {
+   height: 200px;
+@@ -881,10 +937,20 @@
+ 
+ .project-image-placeholder {
+   width: 100%; height: 100%;
+-  background: color-mix(in srgb, var(--proj-color) 12%, transparent);
++  background: #112240;
+   display: flex; align-items: center; justify-content: center;
+   font-size: 3rem;
+   color: var(--proj-color);
++}
++
++.project-image-img {
++  width: 100%;
++  height: 100%;
++  object-fit: cover;
++  transition: transform 0.5s ease;
++}
++.project-card:hover .project-image-img {
++  transform: scale(1.05);
+ }
+ 
+ .project-info {
+@@ -910,6 +976,27 @@
+   border-radius: 20px;
+   font-size: 0.75rem;
+   color: var(--accent-cyan);
++}
++
++/* Tooltip for skills */
++.skill-logo-card::after {
++  content: attr(data-tooltip);
++  position: absolute;
++  bottom: -30px;
++  left: 50%;
++  transform: translateX(-50%);
++  background: rgba(10, 25, 47, 0.9);
++  color: var(--accent-cyan);
++  padding: 4px 8px;
++  border-radius: 4px;
++  font-size: 0.8rem;
++  opacity: 0;
++  pointer-events: none;
++  transition: opacity 0.3s;
++  white-space: nowrap;
++}
++.skill-logo-card:hover::after {
++  opacity: 1;
+ }
+ 
+ /* ── ACHIEVEMENTS ──────────────────────────────────────────── */

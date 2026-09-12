@@ -1,0 +1,29 @@
+--- index.html
++++ index.html
+@@ -318,7 +318,7 @@
+         <div class="projects-slider-grid">
+           <!-- JARVIS Project -->
+           <div class="project-card glass reveal">
+-            <div class="project-image"><div class="project-image-placeholder"><i class='bx bx-brain'></i></div></div>
++            <div class="project-image"><img src="./assets/jarvis.jpg" class="project-image-img" alt="JARVIS"></div>
+             <div class="project-info">
+               <h3 class="project-title">JARVIS</h3>
+               <p class="project-desc">A modern, sleek AI voice assistant web interface.</p>
+@@ -333,7 +333,7 @@
+           
+           <!-- AI Document Verification -->
+           <div class="project-card glass reveal">
+-            <div class="project-image"><div class="project-image-placeholder"><i class='bx bx-file-find'></i></div></div>
++            <div class="project-image"><img src="./assets/ai_doc.jpg" class="project-image-img" alt="AI Doc Verify"></div>
+             <div class="project-info">
+               <h3 class="project-title">AI Document Verification</h3>
+               <p class="project-desc">Web application for intelligent document scanning and verification.</p>
+@@ -348,7 +348,7 @@
+ 
+           <!-- Account Monitor -->
+           <div class="project-card glass reveal">
+-            <div class="project-image"><div class="project-image-placeholder"><i class='bx bx-shield-quarter'></i></div></div>
++            <div class="project-image"><img src="./assets/acc_monitor.jpg" class="project-image-img" alt="Account Monitor"></div>
+             <div class="project-info">
+               <h3 class="project-title">Account Monitor</h3>
+               <p class="project-desc">Cybersecurity dashboard for monitoring active threats and account health.</p>
