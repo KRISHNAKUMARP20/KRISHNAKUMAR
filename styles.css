@@ -1597,6 +1597,17 @@ input, textarea { font-family: var(--font-display); }
   .skills-grid { grid-template-columns: 1fr; }
   .achievements-grid { grid-template-columns: 1fr; }
   .certs-slider-wrapper { display: block; }
+  
+  /* Proper horizontal scroll fixes for mobile */
+  .skills-slider-grid, .experience-slider-grid {
+    justify-content: flex-start;
+    padding: 10px 20px;
+    scroll-padding-left: 20px;
+  }
+  .skills-slider-grid .skills-category-card, .experience-card {
+    flex: 0 0 85vw; /* Make cards slightly narrower than screen width to show the next card */
+  }
+
   .certs-grid {
     display: grid;
     grid-template-columns: 1fr;
