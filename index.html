@@ -1,900 +1,1664 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Krishna Kumar – Information Technology Student, Web Designer &amp; Software Designer."
+    />
+    <meta
+      name="keywords"
+      content="Krishna Kumar, IT Student, Web Designer, Software Designer, Portfolio"
+    />
+    <meta name="author" content="Krishna Kumar" />
+    <title>KK PORTFOLIO</title>
+    <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#7c3aed" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <link rel="apple-touch-icon" href="assets/logo.svg" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description"
-    content="Krishna Kumar – Information Technology Student, Web Designer &amp; Software Designer." />
-  <meta name="keywords" content="Krishna Kumar, IT Student, Web Designer, Software Designer, Portfolio" />
-  <meta name="author" content="Krishna Kumar" />
-  <title>KK PORTFOLIO</title>
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
-  <link rel="manifest" href="manifest.json" />
-  <meta name="theme-color" content="#10b981" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <link rel="apple-touch-icon" href="assets/logo.svg" />
+    <link rel="stylesheet" href="styles.css?v=2" />
 
-  <link rel="stylesheet" href="styles.css?v=36d418e" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;600&display=swap"
-    rel="stylesheet" />
+    <!-- Boxicons -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+  </head>
 
-  <!-- Boxicons -->
-  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-</head>
+  <body>
+    <!-- ========== LOADING SCREEN ========== -->
+    <div id="loader">
+      <div class="new-loader-container" id="accessBox">
+        <div class="loader-top-bar">
+          <div class="loader-top-left">
+            <span class="system-status"
+              >SYSTEM_STATUS: <span class="active-text">ACTIVE</span></span
+            >
+            <span class="core-data">KK DIGITAL WORLD</span>
+          </div>
 
-<body>
-
-  <!-- ========== LOADING SCREEN ========== -->
-  <div id="loader">
-    <div class="globe-container" id="accessBox">
-      <div class="css-globe">
-        <div class="globe-ring"></div>
-        <div class="globe-ring"></div>
-        <div class="globe-ring"></div>
-        <div class="globe-core"></div>
-        <div class="hud-element hud-top-left">[SYS.OK]</div>
-        <div class="hud-element hud-bottom-right">V.1.0</div>
-      </div>
-      <div class="access-content">
-        <h1 class="access-title-main glitch-effect" id="accessTitle" data-text="KK DIGITAL WORLD">KK<br>DIGITAL WORLD</h1>
-        <p class="access-instruction" id="accessInstruction">[ TAP ANYWHERE TO ENTER ]</p>
-      </div>
-    </div>
-  </div>
-
-
-
-  <!-- ========== NAVBAR ========== -->
-  <nav class="navbar" id="navbar">
-    <div class="nav-brand" style="display: flex; align-items: center; gap: 8px;">
-      <img src="assets/profiles.png?v=4" alt="KK Profile"
-        style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-cyan);" />
-      <span style="font-weight: 700; letter-spacing: 0.5px; font-size: 1.1rem; color: #fff;">KK DIGITAL WORLD</span>
-    </div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#hero" class="nav-link active">Home</a></li>
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#skills" class="nav-link">Skills</a></li>
-      <li><a href="#education" class="nav-link">Education</a></li>
-      <li><a href="#experience" class="nav-link">Experience</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#achievements" class="nav-link">Achievements</a></li>
-      <li><a href="#certs" class="nav-link">Certs</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-
-  <!-- ========== HERO SECTION ========== -->
-  <section class="hero" id="hero">
-    <div class="hero-content">
-      <div class="hero-text reveal">
-        <p class="hero-greeting">Welcome to KK Digital World</p>
-        <h1 class="hero-name"><span class="accent">KRISHNAKUMAR</span></h1>
-        <div class="hero-role">
-          <span class="role-prefix">I'm a </span>
-          <span class="typed-text" id="typedText"></span>
-          <span class="cursor-blink">|</span>
         </div>
-        <p class="hero-intro">
-          Turning imagination into meaningful digital solutions through code, creativity, and innovation.
-          Passionate about building technology that solves problems, creates experiences, and leaves an impact.
-        </p>
-        <div class="hero-cta">
-          <a href="assets/KK_Resume.pdf?v=2" target="_blank" class="btn btn-primary">
-            <i class='bx bx-show'></i> View Resume
-          </a>
-          <a href="#contact" class="btn btn-outline">
-            <i class='bx bx-envelope'></i> Contact Me
-          </a>
+
+        <div class="loader-center-display">
+          <div class="percent-circle">
+            <div class="circle-ring ring-1"></div>
+            <div class="circle-ring ring-2"></div>
+            <div class="circle-ring ring-3"></div>
+            <div class="circle-ring ring-4"></div>
+            <div class="percentage-text">
+              <span id="loadPercentage">1%</span>
+              <span class="load-index-text">KK WORLD</span>
+            </div>
+          </div>
         </div>
-        <div class="hero-socials">
-          <a href="https://github.com/KRISHNAKUMARP20" target="_blank" class="social-icon" aria-label="GitHub"><i
-              class='bx bxl-github'></i></a>
-          <a href="https://www.linkedin.com/in/pkrishnakumar-kk" target="_blank" class="social-icon"
-            aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
-          <a href="https://instagram.com/" target="_blank" class="social-icon" aria-label="Instagram"><i
-              class='bx bxl-instagram'></i></a>
-          <a href="mailto:kk6308608@gmail.com" class="social-icon" aria-label="Email"><i class='bx bx-envelope'></i></a>
-        </div>
-      </div>
-      <div class="hero-image reveal">
-        <div class="image-frame">
-          <img src="assets/profiles.png?v=4" alt="Krishna Kumar" class="profile-image" />
+
+        <div class="loader-progress-container">
+          <div class="loader-progress-bar" id="loaderProgressBar"></div>
         </div>
       </div>
     </div>
-    <a href="#about" class="hero-scroll-indicator">
-      <span>Scroll Down</span>
-      <div class="scroll-line"></div>
-    </a>
-  </section>
 
-  <!-- ========== ABOUT SECTION ========== -->
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-header reveal">
-        <h2 class="section-title">About <span class="accent">Me</span></h2>
-        <div class="section-line"></div>
+    <!-- ========== NAVBAR ========== -->
+    <nav class="navbar" id="navbar">
+      <div
+        class="nav-brand"
+        style="display: flex; align-items: center; gap: 8px"
+      >
+        <img
+          src="assets/profiles.png?v=4"
+          alt="KK Profile"
+          style="
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid var(--accent-cyan);
+          "
+        />
+        <span
+          style="
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            font-size: 1.1rem;
+            color: #fff;
+          "
+          >KK DIGITAL WORLD</span
+        >
       </div>
-      <div class="about-intro reveal"
-        style="max-width: 800px; margin: 0 auto 3rem auto; text-align: center; color: var(--text-secondary); font-size: 1.1rem; line-height: 1.8;">
-        <p>Web Designer passionate about crafting modern, responsive, and engaging digital experiences. With a
-          foundational understanding of Cybersecurity, I’m exploring how creativity, technology, and security can come
-          together to build better digital solutions.</p>
-      </div>
-      <div class="about-grid">
-        <div class="about-card glass reveal">
-          <div class="about-card-icon"><i class='bx bx-palette'></i></div>
-          <h3>Web Designer</h3>
-          <p>Crafting clean, responsive, and visually outstanding layouts. Focusing on modern layouts, animations, and
-            user interfaces that create engaging digital experiences.</p>
-        </div>
-        <div class="about-card glass reveal">
-          <div class="about-card-icon"><i class='bx bx-shield-quarter'></i></div>
-          <h3>Cybersecurity</h3>
-          <p>Enthusiastic about security systems, network defense, threat analytics, and secure programming. Actively
-            exploring vulnerability assessment tools.</p>
-        </div>
-        <div class="about-card glass reveal">
-          <div class="about-card-icon"><i class='bx bxl-tux'></i></div>
-          <h3>Linux</h3>
-          <p>Passionate about open-source architecture, shell scripting, terminal systems, and server management.
-            Enjoying customizing and hardening Unix environments.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#education" class="nav-link">Education</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#achievements" class="nav-link">Achievements</a></li>
+        <li><a href="#certs" class="nav-link">Certs</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+        <li><button id="installAppBtn" class="btn btn-outline" style="display: none; padding: 6px 12px; margin-left: 10px; font-size: 0.9rem;">Install App</button></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
 
-  <!-- ========== SKILLS SECTION ========== -->
-  <section class="section" id="skills">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">WHAT I WORK WITH</p>
-        <h2 class="section-title">Technical <span class="accent">Skills</span></h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="skills-slider-wrapper">
-        <button class="slider-btn" id="skillSlideLeft" aria-label="Slide Left"><i class='bx bx-chevron-left'></i></button>
-        <div class="skills-slider-grid" id="skillsGrid">
-          <!-- Programming -->
-          <div class="skills-category-card glass reveal">
-            <div class="skills-category-icon" style="margin-bottom: 15px;"><i class='bx bx-code-alt'></i></div>
-            <h3 class="skills-category-title" style="margin-bottom: 20px;">Programming</h3>
-            <div class="skills-pill-list">
-              <span class="skill-pill">Java</span>
-              <span class="skill-pill">C</span>
-            </div>
+    <!-- ========== HERO SECTION ========== -->
+    <section class="hero" id="hero">
+      <div class="hero-content">
+        <div class="hero-text reveal">
+          <p class="hero-greeting">Welcome to KK Digital World</p>
+          <h1 class="hero-name"><span class="accent">KRISHNAKUMAR</span></h1>
+          <div class="hero-role">
+            <span class="role-prefix">I'm a </span>
+            <span class="typed-text" id="typedText"></span>
+            <span class="cursor-blink">|</span>
           </div>
-          <!-- Web Technologies -->
-          <div class="skills-category-card glass reveal">
-            <div class="skills-category-icon" style="margin-bottom: 15px;"><i class='bx bx-globe'></i></div>
-            <h3 class="skills-category-title" style="margin-bottom: 20px;">Web Technologies</h3>
-            <div class="skills-pill-list">
-              <span class="skill-pill">HTML</span>
-              <span class="skill-pill">CSS</span>
-              <span class="skill-pill">JavaScript</span>
-            </div>
-          </div>
-          <!-- Database -->
-          <div class="skills-category-card glass reveal">
-            <div class="skills-category-icon" style="margin-bottom: 15px;"><i class='bx bx-data'></i></div>
-            <h3 class="skills-category-title" style="margin-bottom: 20px;">Database</h3>
-            <div class="skills-pill-list">
-              <span class="skill-pill">MySQL</span>
-              <span class="skill-pill">MariaDB</span>
-              <span class="skill-pill">MongoDB</span>
-            </div>
-          </div>
-          <!-- Operating Systems -->
-          <div class="skills-category-card glass reveal">
-            <div class="skills-category-icon" style="margin-bottom: 15px;"><i class='bx bxl-tux'></i></div>
-            <h3 class="skills-category-title" style="margin-bottom: 20px;">Operating Systems</h3>
-            <div class="skills-pill-list">
-              <span class="skill-pill">Linux (Ubuntu, Parrot, Kali)</span>
-            </div>
-          </div>
-          <!-- Tools -->
-          <div class="skills-category-card glass reveal">
-            <div class="skills-category-icon" style="margin-bottom: 15px;"><i class='bx bx-cog'></i></div>
-            <h3 class="skills-category-title" style="margin-bottom: 20px;">Tools</h3>
-            <div class="skills-pill-list">
-              <span class="skill-pill">Git</span>
-              <span class="skill-pill">GitHub</span>
-            </div>
-          </div>
-        </div>
-        <button class="slider-btn" id="skillSlideRight" aria-label="Slide Right"><i class='bx bx-chevron-right'></i></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== EDUCATION SECTION ========== -->
-  <section class="section" id="education">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">My Learning Journey</p>
-        <h2 class="section-title">My <span class="accent">Education</span></h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content glass">
-            <span class="timeline-date">2024 - 2028</span>
-            <h3>B.Tech - Information Technology</h3>
-            <p class="timeline-subtitle">M. Kumarasamy College of Engineering | CGPA: 7.5/10.0</p>
-            <p>Software development, databases and Linux(commands)</p>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content glass">
-            <span class="timeline-date">2022 - 2024</span>
-            <h3>Higher Secondary Education (HSC)</h3>
-            <p class="timeline-subtitle">Bio-Maths Stream | Percentage: 72.33%</p>
-            <p>Completed HSC with Physics, Chemistry, Biology, and Mathematics, building strong mathematical
-              foundations.</p>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content glass">
-            <span class="timeline-date">2021 - 2022</span>
-            <h3>Secondary School Education (SSLC)</h3>
-            <p class="timeline-subtitle">State Board | Percentage: 83.4%</p>
-            <p>Completed SSLC with a solid academic record across science, mathematics, and languages.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== EXPERIENCE SECTION ========== -->
-    <section class="section" id="experience">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">Professional Pathway</p>
-        <h2 class="section-title">Work <span class="accent">Experience</span></h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="experience-slider-wrapper">
-        <button class="slider-btn" id="expSlideLeft" aria-label="Slide Left"><i class='bx bx-chevron-left'></i></button>
-        <div class="experience-slider-grid" id="expGrid">
-          <!-- Experience 1 -->
-          <div class="experience-card glass reveal">
-            <div class="exp-header">
-              <div class="exp-icon"><i class='bx bx-shield-quarter'></i></div>
-              <div class="exp-title">
-                <h3>Cyber Security Intern</h3>
-                <p class="exp-subtitle">kaashiv InfoTech</p>
-              </div>
-            </div>
-            <span class="exp-date">June 2026 – July 2026</span>
-            <p class="exp-desc">Gained hands-on experience in security analysis and Unix/Linux system administration. Worked extensively with Linux commands, log auditing, network monitoring, and script automation.</p>
-            <a href="assets/cyber security.pdf" target="_blank" class="exp-link" style="text-decoration: none; cursor: pointer;">Go to Certificate <i class='bx bx-right-arrow-alt'></i></a>
-          </div>
-
-          <!-- Experience 2 -->
-          <div class="experience-card glass reveal">
-            <div class="exp-header">
-              <div class="exp-icon"><i class='bx bx-laptop'></i></div>
-              <div class="exp-title">
-                <h3>Web Development Intern</h3>
-                <p class="exp-subtitle">iStudio Technologies</p>
-              </div>
-            </div>
-            <span class="exp-date">December 2025 – January 2026</span>
-            <p class="exp-desc">Contributed to building and optimizing responsive, high-performance web applications. Collaborated on UI/UX improvements using HTML, CSS, JavaScript, and web design concepts.</p>
-            <a href="assets/web design certificates.pdf" target="_blank" class="exp-link" style="text-decoration: none; cursor: pointer;">Go to Certificate <i class='bx bx-right-arrow-alt'></i></a>
-          </div>
-        </div>
-        <button class="slider-btn" id="expSlideRight" aria-label="Slide Right"><i class='bx bx-chevron-right'></i></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== PROJECTS SECTION ========== -->
-  <section class="section" id="projects">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">WHAT I'VE BUILT</p>
-        <h2 class="section-title">My <span class="accent">Projects</span></h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="projects-slider-wrapper">
-        <button class="slider-btn" id="projectSlideLeft" aria-label="Slide Left"><i class='bx bx-chevron-left'></i></button>
-        <div class="projects-slider-grid" id="projectsGrid">
-
-          <!-- Project: WOMEN SAFETY -->
-          <div class="project-card glass reveal">
-            <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=500&q=80" class="project-image-img" alt="Women Safety">
-            </div>
-            <div class="project-info">
-              <h3 class="project-name">WOMEN SAFETY</h3>
-              <p class="project-desc">A comprehensive platform dedicated to enhancing women's safety with emergency tools, resources, and quick assistance features.</p>
-              <div class="project-tech">
-                <span>Safety</span>
-                <span>Web App</span>
-                <span>Security</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/Women-Safety" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://womensafekk.netlify.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project: JARVIS -->
-          <div class="project-card glass reveal">
-            <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500&q=80" class="project-image-img" alt="JARVIS">
-            </div>
-            <div class="project-info">
-              <h3 class="project-name">JARVIS</h3>
-              <p class="project-desc">An AI-powered voice assistant capable of answering queries and performing tasks.</p>
-              <div class="project-tech">
-                <span>AI</span>
-                <span>Voice</span>
-                <span>Assistant</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/JARVIS" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kkjarvis.netlify.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project: AI Document Verification -->
-          <div class="project-card glass reveal">
-            <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=500&q=80" class="project-image-img" alt="AI Doc Verify">
-            </div>
-            <div class="project-info">
-              <h3 class="project-name">AI Document Verification</h3>
-              <p class="project-desc">A smart tool for verifying and analyzing documents using artificial intelligence.</p>
-              <div class="project-tech">
-                <span>AI</span>
-                <span>Verification</span>
-                <span>Security</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/AI-Document-Verification" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kkaidocumentverify.vercel.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project: Account Monitor -->
-          <div class="project-card glass reveal">
-            <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&q=80" class="project-image-img" alt="Account Monitor">
-            </div>
-            <div class="project-info">
-              <h3 class="project-name">Account Monitor</h3>
-              <p class="project-desc">A web application designed to check if social media accounts have been compromised or leaked online. Provides reports.</p>
-              <div class="project-tech">
-                <span>Security</span>
-                <span>API</span>
-                <span>React</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/ACCMONITOR" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://accmonitor.vercel.app/" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project: KK Hotel Booking -->
-          <div class="project-card glass reveal">
-            <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80" class="project-image-img" alt="KK Hotel Booking">
-            </div>
-            <div class="project-info">
-              <h3 class="project-name">KK Hotel Booking</h3>
-              <p class="project-desc">A full-featured booking client covering hotels across India with search, filter, and reservation flows.</p>
-              <div class="project-tech">
-                <span>Booking</span>
-                <span>React</span>
-                <span>Tailwind</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/KK-hotel" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kk-hotel.vercel.app/" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project: KK Smart Cab -->
-          <div class="project-card glass reveal">
-            <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1490604001847-b712b0c2f967?w=500&q=80" class="project-image-img" alt="KK Smart Cab">
-            </div>
-            <div class="project-info">
-              <h3 class="project-name">KK Smart Cab</h3>
-              <p class="project-desc">An interactive taxi booking client supporting quick routing calculations and route visualization maps.</p>
-              <div class="project-tech">
-                <span>Maps</span>
-                <span>React</span>
-                <span>API</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/KK-CAB" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kk-smart-cab.vercel.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project: KK CHILD WEB -->
-          <div class="project-card glass reveal">
-            <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=500&q=80" class="project-image-img" alt="Child Web">
-            </div>
-            <div class="project-info">
-              <h3 class="project-name">KK CHILD WEB</h3>
-              <p class="project-desc">A cheerful and engaging web experience created for children to learn, explore, and enjoy.</p>
-              <div class="project-tech">
-                <span>Education</span>
-                <span>Web Design</span>
-                <span>Interactive</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/KK-CHILD-WEB" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kkweb-one.vercel.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project: KK GUESS NUMBER -->
-          <div class="project-card glass reveal">
-            <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=500&q=80" class="project-image-img" alt="Guess Number">
-            </div>
-            <div class="project-info">
-              <h3 class="project-name">KK GUESS NUMBER</h3>
-              <p class="project-desc">A fun number-guessing game that challenges players to find the hidden number with interactive feedback.</p>
-              <div class="project-tech">
-                <span>Game</span>
-                <span>JavaScript</span>
-                <span>Interactive</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/KRISHNAKUMARP20/KK-NUMBER-GUESS" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://kkguess.vercel.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project: ADVANCE CAB -->
-          <div class="project-card glass reveal">
-            <div class="project-image">
-              <img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&q=80" class="project-image-img" alt="Advance Cab">
-            </div>
-            <div class="project-info">
-              <h3 class="project-name">ADVANCE CAB</h3>
-              <p class="project-desc">An advanced cab booking application providing a seamless and efficient booking experience.</p>
-              <div class="project-tech">
-                <span>Booking</span>
-                <span>Web App</span>
-                <span>UI/UX</span>
-              </div>
-              <div class="project-links">
-                <a href="https://github.com/Advanced-CAB" target="_blank" class="btn btn-outline btn-sm"><i class='bx bxl-github'></i> Code</a>
-                <a href="https://advancecab.netlify.app" target="_blank" class="btn btn-primary btn-sm"><i class='bx bx-link-external'></i> Live</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-        <button class="slider-btn" id="projectSlideRight" aria-label="Slide Right"><i class='bx bx-chevron-right'></i></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== ACHIEVEMENTS SECTION ========== -->
-  <section class="section" id="achievements">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">My Progress</p>
-        <h2 class="section-title">Key <span class="accent">Achievements</span></h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="achievements-grid" style="display: flex; justify-content: center;">
-        <div class="achievement-card glass reveal" onclick="window.open('assets/ekna_mr_coder.png', '_blank')"
-          style="cursor: pointer; max-width: 400px; width: 100%;">
-          <div class="achievement-icon"><i class='bx bx-code-alt'></i></div>
-          <h3>Mr.Coder — EKNA '25</h3>
-          <p>Participated in the "Mr. Coder" coding event at the EKNA '25 National Level Techno Cultural Fest held at K.S.R College of Engineering.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== CERTS SECTION ========== -->
-  <section class="section" id="certs">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">My Credentials</p>
-        <h2 class="section-title">Professional <span class="accent">Certifications</span></h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="certs-slider-wrapper">
-        <button class="slider-btn" id="slideLeft" aria-label="Slide Left"><i class='bx bx-chevron-left'></i></button>
-        <div class="certs-grid" id="certsGrid">
-          
-          <!-- Cert 1 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/Gemini Certification.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-bot'></i></div>
-            <h3>GEMINI CERTIFICATE</h3>
-            <p>Certified in understanding and applying Google's advanced Gemini AI models, tools, and capabilities.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 2 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/CISCO Cyber_Threat_Management.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-shield'></i></div>
-            <h3>CISCO Cyber Threat Management</h3>
-            <p>In-depth training on cyber threat landscapes, threat intelligence, and modern security operations.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 3 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/CISCO Network_Defense.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-network-chart'></i></div>
-            <h3>CISCO Network Defense</h3>
-            <p>Comprehensive certification covering network security architecture, vulnerability assessment, and defense strategies.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 4 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/IBM PY0101EN .pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bxl-python'></i></div>
-            <h3>IBM Python for Data Science</h3>
-            <p>Cognitive Class training covering Python programming basics, data structures, and data science libraries.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 5 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/Introduction to Internet of Things 4.0.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-chip'></i></div>
-            <h3>Introduction to IoT 4.0</h3>
-            <p>Advanced NPTEL program focused on Industrial IoT (IIoT), smart factory concepts, and cyber-physical systems.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 6 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/Introduction to Internet of Things.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-server'></i></div>
-            <h3>Introduction to IoT</h3>
-            <p>NPTEL certification highlighting the foundation of IoT architecture, sensor networking, and smart nodes.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 7 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/bano job ready communication.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-message-rounded-dots'></i></div>
-            <h3>Bano Job Ready Communication</h3>
-            <p>Professional workspace communication training, presentation skills, and business correspondence.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 8 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/bano job ready.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-briefcase-alt-2'></i></div>
-            <h3>Bano Job Ready</h3>
-            <p>Career training program mapping essential job readiness skills, interview preparation, and professional ethics.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-          
-          <!-- Cert 9 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/skillup learn cyber security.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-check-shield'></i></div>
-            <h3>SkillUp Learn Cyber Security</h3>
-            <p>Essential course covering security principles, network scanning, firewalls, and cryptography concepts.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-
-          <!-- Cert 10 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/data science IBM.jpeg', '_blank')">
-            <div class="cert-icon"><i class='bx bx-bar-chart-alt-2'></i></div>
-            <h3>IBM Data Science</h3>
-            <p>Comprehensive certification covering data analysis, visualization, and machine learning methodologies.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-
-          <!-- Cert 11 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/BE10XAI.png', '_blank')">
-            <div class="cert-icon"><i class='bx bx-brain'></i></div>
-            <h3>BE10X AI Workshop</h3>
-            <p>Certification of participation in advanced AI tools workshop for productivity and automation.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-
-          <!-- Cert 12 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/Adobe.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bxl-adobe'></i></div>
-            <h3>Adobe</h3>
-            <p>Certified professional training focusing on creative digital skills and multimedia production.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-
-          <!-- Cert 13 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/AI for Beginners.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-bot'></i></div>
-            <h3>AI for Beginners</h3>
-            <p>Fundamental concepts of artificial intelligence, machine learning, and its practical applications.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-
-          <!-- Cert 14 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/Critical Thinking in the AI Era.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-bulb'></i></div>
-            <h3>Critical Thinking in the AI Era</h3>
-            <p>Developing analytical skills to evaluate and navigate AI technologies and their impact.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-
-          <!-- Cert 15 -->
-          <div class="cert-card glass reveal" onclick="window.open('assets/TATA Crucible.pdf', '_blank')">
-            <div class="cert-icon"><i class='bx bx-trophy'></i></div>
-            <h3>TATA Crucible</h3>
-            <p>Certificate of participation/achievement in the prestigious TATA Crucible business quiz.</p>
-            <div class="cert-link">Go to Certificate <i class='bx bx-right-arrow-alt'></i></div>
-          </div>
-
-        </div>
-        <button class="slider-btn" id="slideRight" aria-label="Slide Right"><i class='bx bx-chevron-right'></i></button>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== CONTACT SECTION ========== -->
-  <section class="section" id="contact">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="section-eyebrow">Let’s Connect</p>
-        <h2 class="section-title">Contact <span class="accent">Me</span></h2>
-        <div class="section-line"></div>
-      </div>
-      <div class="contact-wrapper">
-        <div class="contact-info">
-          <h3 class="accent" style="font-size: 1.5rem; font-weight: 600; margin-bottom: 20px;">Open to Opportunities
-          </h3>
-          <p style="color: var(--text-secondary); margin-bottom: 30px; line-height: 1.7;">
-            Whether you have a project idea, internship offer, or just want to say hi — my inbox is always open. I'll
-            respond as soon as possible.
+          <p class="hero-intro">
+            Turning imagination into meaningful digital solutions through code,
+            creativity, and innovation. Passionate about building technology
+            that solves problems, creates experiences, and leaves an impact.
           </p>
-          <div class="contact-details">
-            <a href="mailto:kk6308608@gmail.com" class="contact-link glass">
-              <i class='bx bx-envelope'></i>
-              <span>kk6308608@gmail.com</span>
+          <div class="hero-cta">
+            <a
+              href="assets/KK_Resume.pdf?v=2"
+              target="_blank"
+              class="btn btn-primary"
+            >
+              <i class="bx bx-show"></i> View Resume
             </a>
-            <a href="https://www.linkedin.com/in/pkrishnakumar-kk" target="_blank" class="contact-link glass">
-              <i class='bx bxl-linkedin'></i>
-              <span>LinkedIn Profile</span>
+            <a href="#contact" class="btn btn-outline">
+              <i class="bx bx-envelope"></i> Contact Me
             </a>
-            <a href="https://github.com/KRISHNAKUMARP20" target="_blank" class="contact-link glass">
-              <i class='bx bxl-github'></i>
-              <span>github.com/KRISHNAKUMARP20</span>
-            </a>
-            <a href="https://www.instagram.com/_kxixh" target="_blank" class="contact-link glass">
-              <i class='bx bxl-instagram'></i>
-              <span>instagram.com/_kxixh</span>
-            </a>
+          </div>
+          <div class="hero-socials">
+            <a
+              href="https://github.com/KRISHNAKUMARP20"
+              target="_blank"
+              class="social-icon"
+              aria-label="GitHub"
+              ><i class="bx bxl-github"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/pkrishnakumar-kk"
+              target="_blank"
+              class="social-icon"
+              aria-label="LinkedIn"
+              ><i class="bx bxl-linkedin"></i
+            ></a>
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              class="social-icon"
+              aria-label="Instagram"
+              ><i class="bx bxl-instagram"></i
+            ></a>
+            <a
+              href="mailto:kk6308608@gmail.com"
+              class="social-icon"
+              aria-label="Email"
+              ><i class="bx bx-envelope"></i
+            ></a>
           </div>
         </div>
-        <form class="contact-form glass reveal" id="contactForm">
-          <div class="form-group">
-            <label>FULL NAME</label>
-            <input type="text" id="name" required placeholder="Your Name" />
+        <div class="hero-image reveal">
+          <div class="image-frame">
+            <img
+              src="assets/profiles.png?v=4"
+              alt="Krishna Kumar"
+              class="profile-image"
+            />
           </div>
-          <div class="form-group">
-            <label>EMAIL ADDRESS</label>
-            <input type="email" id="email" required placeholder="your@email.com" />
+        </div>
+      </div>
+      <a href="#about" class="hero-scroll-indicator">
+        <span>Scroll Down</span>
+        <div class="scroll-line"></div>
+      </a>
+    </section>
+
+    <!-- ========== ABOUT SECTION ========== -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">About <span class="accent">Me</span></h2>
+          <div class="section-line"></div>
+        </div>
+        <div
+          class="about-intro reveal"
+          style="
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+          "
+        >
+          <p>
+            Web Designer passionate about crafting modern, responsive, and
+            engaging digital experiences. With a foundational understanding of
+            Cybersecurity, I’m exploring how creativity, technology, and
+            security can come together to build better digital solutions.
+          </p>
+        </div>
+        <div class="about-grid">
+          <div class="about-card glass reveal">
+            <div class="about-card-icon"><i class="bx bx-palette"></i></div>
+            <h3>Web Designer</h3>
+            <p>
+              Crafting clean, responsive, and visually outstanding layouts.
+              Focusing on modern layouts, animations, and user interfaces that
+              create engaging digital experiences.
+            </p>
           </div>
-          <div class="form-group">
-            <label>SUBJECT</label>
-            <input type="text" id="subject" placeholder="What's this about?" />
+          <div class="about-card glass reveal">
+            <div class="about-card-icon">
+              <i class="bx bx-shield-quarter"></i>
+            </div>
+            <h3>Cybersecurity</h3>
+            <p>
+              Enthusiastic about security systems, network defense, threat
+              analytics, and secure programming. Actively exploring
+              vulnerability assessment tools.
+            </p>
           </div>
-          <div class="form-group">
-            <label>MESSAGE</label>
-            <textarea id="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+          <div class="about-card glass reveal">
+            <div class="about-card-icon"><i class="bx bxl-tux"></i></div>
+            <h3>Linux</h3>
+            <p>
+              Passionate about open-source architecture, shell scripting,
+              terminal systems, and server management. Enjoying customizing and
+              hardening Unix environments.
+            </p>
           </div>
-          <button type="submit" class="btn btn-primary"
-            style="width: 100%; display: flex; justify-content: center; align-items: center; gap: 8px;">
-            <i class='bx bx-send'></i> Send Message
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SKILLS SECTION ========== -->
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">WHAT I WORK WITH</p>
+          <h2 class="section-title">
+            Technical <span class="accent">Skills</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="skills-slider-wrapper">
+          <button
+            class="slider-btn"
+            id="skillSlideLeft"
+            aria-label="Slide Left"
+          >
+            <i class="bx bx-chevron-left"></i>
+          </button>
+          <div class="skills-slider-grid" id="skillsGrid">
+            <!-- Programming -->
+            <div class="skills-category-card glass reveal">
+              <div class="skills-category-icon" style="margin-bottom: 15px">
+                <i class="bx bx-code-alt"></i>
+              </div>
+              <h3 class="skills-category-title" style="margin-bottom: 20px">
+                Programming
+              </h3>
+              <div class="skills-pill-list">
+                <span class="skill-pill">Java</span>
+                <span class="skill-pill">C</span>
+              </div>
+            </div>
+            <!-- Web Technologies -->
+            <div class="skills-category-card glass reveal">
+              <div class="skills-category-icon" style="margin-bottom: 15px">
+                <i class="bx bx-globe"></i>
+              </div>
+              <h3 class="skills-category-title" style="margin-bottom: 20px">
+                Web Technologies
+              </h3>
+              <div class="skills-pill-list">
+                <span class="skill-pill">HTML</span>
+                <span class="skill-pill">CSS</span>
+                <span class="skill-pill">JavaScript</span>
+              </div>
+            </div>
+            <!-- Database -->
+            <div class="skills-category-card glass reveal">
+              <div class="skills-category-icon" style="margin-bottom: 15px">
+                <i class="bx bx-data"></i>
+              </div>
+              <h3 class="skills-category-title" style="margin-bottom: 20px">
+                Database
+              </h3>
+              <div class="skills-pill-list">
+                <span class="skill-pill">MySQL</span>
+                <span class="skill-pill">MariaDB</span>
+                <span class="skill-pill">MongoDB</span>
+              </div>
+            </div>
+            <!-- Operating Systems -->
+            <div class="skills-category-card glass reveal">
+              <div class="skills-category-icon" style="margin-bottom: 15px">
+                <i class="bx bxl-tux"></i>
+              </div>
+              <h3 class="skills-category-title" style="margin-bottom: 20px">
+                Operating Systems
+              </h3>
+              <div class="skills-pill-list">
+                <span class="skill-pill">Linux (Ubuntu, Parrot, Kali)</span>
+              </div>
+            </div>
+            <!-- Tools -->
+            <div class="skills-category-card glass reveal">
+              <div class="skills-category-icon" style="margin-bottom: 15px">
+                <i class="bx bx-cog"></i>
+              </div>
+              <h3 class="skills-category-title" style="margin-bottom: 20px">
+                Tools
+              </h3>
+              <div class="skills-pill-list">
+                <span class="skill-pill">Git</span>
+                <span class="skill-pill">GitHub</span>
+              </div>
+            </div>
+          </div>
+          <button
+            class="slider-btn"
+            id="skillSlideRight"
+            aria-label="Slide Right"
+          >
+            <i class="bx bx-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EDUCATION SECTION ========== -->
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">My Learning Journey</p>
+          <h2 class="section-title">
+            My <span class="accent">Education</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass">
+              <span class="timeline-date">2024 - 2028</span>
+              <h3>B.Tech - Information Technology</h3>
+              <p class="timeline-subtitle">
+                M. Kumarasamy College of Engineering | CGPA: 7.5/10.0
+              </p>
+              <p>Software development, databases and Linux(commands)</p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass">
+              <span class="timeline-date">2022 - 2024</span>
+              <h3>Higher Secondary Education (HSC)</h3>
+              <p class="timeline-subtitle">
+                Bio-Maths Stream | Percentage: 72.33%
+              </p>
+              <p>
+                Completed HSC with Physics, Chemistry, Biology, and Mathematics,
+                building strong mathematical foundations.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-content glass">
+              <span class="timeline-date">2021 - 2022</span>
+              <h3>Secondary School Education (SSLC)</h3>
+              <p class="timeline-subtitle">State Board | Percentage: 83.4%</p>
+              <p>
+                Completed SSLC with a solid academic record across science,
+                mathematics, and languages.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== EXPERIENCE SECTION ========== -->
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Professional Pathway</p>
+          <h2 class="section-title">
+            Work <span class="accent">Experience</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="experience-slider-wrapper">
+          <button class="slider-btn" id="expSlideLeft" aria-label="Slide Left">
+            <i class="bx bx-chevron-left"></i>
+          </button>
+          <div class="experience-slider-grid" id="expGrid">
+            <!-- Experience 1 -->
+            <div class="experience-card glass reveal">
+              <div class="exp-header">
+                <div class="exp-icon"><i class="bx bx-shield-quarter"></i></div>
+                <div class="exp-title">
+                  <h3>Cyber Security Intern</h3>
+                  <p class="exp-subtitle">kaashiv InfoTech</p>
+                </div>
+              </div>
+              <span class="exp-date">June 2026 – July 2026</span>
+              <p class="exp-desc">
+                Gained hands-on experience in security analysis and Unix/Linux
+                system administration. Worked extensively with Linux commands,
+                log auditing, network monitoring, and script automation.
+              </p>
+              <a
+                href="assets/cyber security.pdf"
+                target="_blank"
+                class="exp-link"
+                style="text-decoration: none; cursor: pointer"
+                >Go to Certificate <i class="bx bx-right-arrow-alt"></i
+              ></a>
+            </div>
+
+            <!-- Experience 2 -->
+            <div class="experience-card glass reveal">
+              <div class="exp-header">
+                <div class="exp-icon"><i class="bx bx-laptop"></i></div>
+                <div class="exp-title">
+                  <h3>Web Development Intern</h3>
+                  <p class="exp-subtitle">iStudio Technologies</p>
+                </div>
+              </div>
+              <span class="exp-date">December 2025 – January 2026</span>
+              <p class="exp-desc">
+                Contributed to building and optimizing responsive,
+                high-performance web applications. Collaborated on UI/UX
+                improvements using HTML, CSS, JavaScript, and web design
+                concepts.
+              </p>
+              <a
+                href="assets/web design certificates.pdf"
+                target="_blank"
+                class="exp-link"
+                style="text-decoration: none; cursor: pointer"
+                >Go to Certificate <i class="bx bx-right-arrow-alt"></i
+              ></a>
+            </div>
+          </div>
+          <button
+            class="slider-btn"
+            id="expSlideRight"
+            aria-label="Slide Right"
+          >
+            <i class="bx bx-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== PROJECTS SECTION ========== -->
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">WHAT I'VE BUILT</p>
+          <h2 class="section-title">My <span class="accent">Projects</span></h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="projects-slider-wrapper">
+          <button
+            class="slider-btn"
+            id="projectSlideLeft"
+            aria-label="Slide Left"
+          >
+            <i class="bx bx-chevron-left"></i>
+          </button>
+          <div class="projects-slider-grid" id="projectsGrid">
+            <!-- Project: WOMEN SAFETY -->
+            <div class="project-card glass reveal">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=500&q=80"
+                  class="project-image-img"
+                  alt="Women Safety"
+                />
+              </div>
+              <div class="project-info">
+                <h3 class="project-name">WOMEN SAFETY</h3>
+                <p class="project-desc">
+                  A comprehensive platform dedicated to enhancing women's safety
+                  with emergency tools, resources, and quick assistance
+                  features.
+                </p>
+                <div class="project-tech">
+                  <span>Safety</span>
+                  <span>Web App</span>
+                  <span>Security</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/KRISHNAKUMARP20/Women-Safety"
+                    target="_blank"
+                    class="btn btn-outline btn-sm"
+                    ><i class="bx bxl-github"></i> Code</a
+                  >
+                  <a
+                    href="https://womensafekk.netlify.app"
+                    target="_blank"
+                    class="btn btn-primary btn-sm"
+                    ><i class="bx bx-link-external"></i> Live</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project: JARVIS -->
+            <div class="project-card glass reveal">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=500&q=80"
+                  class="project-image-img"
+                  alt="JARVIS"
+                />
+              </div>
+              <div class="project-info">
+                <h3 class="project-name">JARVIS</h3>
+                <p class="project-desc">
+                  An AI-powered voice assistant capable of answering queries and
+                  performing tasks.
+                </p>
+                <div class="project-tech">
+                  <span>AI</span>
+                  <span>Voice</span>
+                  <span>Assistant</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/KRISHNAKUMARP20/JARVIS"
+                    target="_blank"
+                    class="btn btn-outline btn-sm"
+                    ><i class="bx bxl-github"></i> Code</a
+                  >
+                  <a
+                    href="https://kkjarvis.netlify.app"
+                    target="_blank"
+                    class="btn btn-primary btn-sm"
+                    ><i class="bx bx-link-external"></i> Live</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project: AI Document Verification -->
+            <div class="project-card glass reveal">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=500&q=80"
+                  class="project-image-img"
+                  alt="AI Doc Verify"
+                />
+              </div>
+              <div class="project-info">
+                <h3 class="project-name">AI Document Verification</h3>
+                <p class="project-desc">
+                  A smart tool for verifying and analyzing documents using
+                  artificial intelligence.
+                </p>
+                <div class="project-tech">
+                  <span>AI</span>
+                  <span>Verification</span>
+                  <span>Security</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/KRISHNAKUMARP20/AI-Document-Verification"
+                    target="_blank"
+                    class="btn btn-outline btn-sm"
+                    ><i class="bx bxl-github"></i> Code</a
+                  >
+                  <a
+                    href="https://kkaidocumentverify.vercel.app"
+                    target="_blank"
+                    class="btn btn-primary btn-sm"
+                    ><i class="bx bx-link-external"></i> Live</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project: Account Monitor -->
+            <div class="project-card glass reveal">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=500&q=80"
+                  class="project-image-img"
+                  alt="Account Monitor"
+                />
+              </div>
+              <div class="project-info">
+                <h3 class="project-name">Account Monitor</h3>
+                <p class="project-desc">
+                  A web application designed to check if social media accounts
+                  have been compromised or leaked online. Provides reports.
+                </p>
+                <div class="project-tech">
+                  <span>Security</span>
+                  <span>API</span>
+                  <span>React</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/KRISHNAKUMARP20/ACCMONITOR"
+                    target="_blank"
+                    class="btn btn-outline btn-sm"
+                    ><i class="bx bxl-github"></i> Code</a
+                  >
+                  <a
+                    href="https://accmonitor.vercel.app/"
+                    target="_blank"
+                    class="btn btn-primary btn-sm"
+                    ><i class="bx bx-link-external"></i> Live</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project: KK Hotel Booking -->
+            <div class="project-card glass reveal">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=500&q=80"
+                  class="project-image-img"
+                  alt="KK Hotel Booking"
+                />
+              </div>
+              <div class="project-info">
+                <h3 class="project-name">KK Hotel Booking</h3>
+                <p class="project-desc">
+                  A full-featured booking client covering hotels across India
+                  with search, filter, and reservation flows.
+                </p>
+                <div class="project-tech">
+                  <span>Booking</span>
+                  <span>React</span>
+                  <span>Tailwind</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/KRISHNAKUMARP20/KK-hotel"
+                    target="_blank"
+                    class="btn btn-outline btn-sm"
+                    ><i class="bx bxl-github"></i> Code</a
+                  >
+                  <a
+                    href="https://kk-hotel.vercel.app/"
+                    target="_blank"
+                    class="btn btn-primary btn-sm"
+                    ><i class="bx bx-link-external"></i> Live</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project: KK Smart Cab -->
+            <div class="project-card glass reveal">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1490604001847-b712b0c2f967?w=500&q=80"
+                  class="project-image-img"
+                  alt="KK Smart Cab"
+                />
+              </div>
+              <div class="project-info">
+                <h3 class="project-name">KK Smart Cab</h3>
+                <p class="project-desc">
+                  An interactive taxi booking client supporting quick routing
+                  calculations and route visualization maps.
+                </p>
+                <div class="project-tech">
+                  <span>Maps</span>
+                  <span>React</span>
+                  <span>API</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/KRISHNAKUMARP20/KK-CAB"
+                    target="_blank"
+                    class="btn btn-outline btn-sm"
+                    ><i class="bx bxl-github"></i> Code</a
+                  >
+                  <a
+                    href="https://kk-smart-cab.vercel.app"
+                    target="_blank"
+                    class="btn btn-primary btn-sm"
+                    ><i class="bx bx-link-external"></i> Live</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project: KK CHILD WEB -->
+            <div class="project-card glass reveal">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=500&q=80"
+                  class="project-image-img"
+                  alt="Child Web"
+                />
+              </div>
+              <div class="project-info">
+                <h3 class="project-name">KK CHILD WEB</h3>
+                <p class="project-desc">
+                  A cheerful and engaging web experience created for children to
+                  learn, explore, and enjoy.
+                </p>
+                <div class="project-tech">
+                  <span>Education</span>
+                  <span>Web Design</span>
+                  <span>Interactive</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/KRISHNAKUMARP20/KK-CHILD-WEB"
+                    target="_blank"
+                    class="btn btn-outline btn-sm"
+                    ><i class="bx bxl-github"></i> Code</a
+                  >
+                  <a
+                    href="https://kkweb-one.vercel.app"
+                    target="_blank"
+                    class="btn btn-primary btn-sm"
+                    ><i class="bx bx-link-external"></i> Live</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project: KK GUESS NUMBER -->
+            <div class="project-card glass reveal">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?w=500&q=80"
+                  class="project-image-img"
+                  alt="Guess Number"
+                />
+              </div>
+              <div class="project-info">
+                <h3 class="project-name">KK GUESS NUMBER</h3>
+                <p class="project-desc">
+                  A fun number-guessing game that challenges players to find the
+                  hidden number with interactive feedback.
+                </p>
+                <div class="project-tech">
+                  <span>Game</span>
+                  <span>JavaScript</span>
+                  <span>Interactive</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/KRISHNAKUMARP20/KK-NUMBER-GUESS"
+                    target="_blank"
+                    class="btn btn-outline btn-sm"
+                    ><i class="bx bxl-github"></i> Code</a
+                  >
+                  <a
+                    href="https://kkguess.vercel.app"
+                    target="_blank"
+                    class="btn btn-primary btn-sm"
+                    ><i class="bx bx-link-external"></i> Live</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Project: ADVANCE CAB -->
+            <div class="project-card glass reveal">
+              <div class="project-image">
+                <img
+                  src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=500&q=80"
+                  class="project-image-img"
+                  alt="Advance Cab"
+                />
+              </div>
+              <div class="project-info">
+                <h3 class="project-name">ADVANCE CAB</h3>
+                <p class="project-desc">
+                  An advanced cab booking application providing a seamless and
+                  efficient booking experience.
+                </p>
+                <div class="project-tech">
+                  <span>Booking</span>
+                  <span>Web App</span>
+                  <span>UI/UX</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/Advanced-CAB"
+                    target="_blank"
+                    class="btn btn-outline btn-sm"
+                    ><i class="bx bxl-github"></i> Code</a
+                  >
+                  <a
+                    href="https://advancecab.netlify.app"
+                    target="_blank"
+                    class="btn btn-primary btn-sm"
+                    ><i class="bx bx-link-external"></i> Live</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            class="slider-btn"
+            id="projectSlideRight"
+            aria-label="Slide Right"
+          >
+            <i class="bx bx-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== ACHIEVEMENTS SECTION ========== -->
+    <section class="section" id="achievements">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">My Progress</p>
+          <h2 class="section-title">
+            Key <span class="accent">Achievements</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+        <div
+          class="achievements-grid"
+          style="display: flex; justify-content: center"
+        >
+          <div
+            class="achievement-card glass reveal"
+            onclick="window.open('assets/ekna_mr_coder.png', '_blank')"
+            style="cursor: pointer; max-width: 400px; width: 100%"
+          >
+            <div class="achievement-icon"><i class="bx bx-code-alt"></i></div>
+            <h3>Mr.Coder — EKNA '25</h3>
+            <p>
+              Participated in the "Mr. Coder" coding event at the EKNA '25
+              National Level Techno Cultural Fest held at K.S.R College of
+              Engineering.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CERTS SECTION ========== -->
+    <section class="section" id="certs">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">My Credentials</p>
+          <h2 class="section-title">
+            Professional <span class="accent">Certifications</span>
+          </h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="certs-slider-wrapper">
+          <button class="slider-btn" id="slideLeft" aria-label="Slide Left">
+            <i class="bx bx-chevron-left"></i>
+          </button>
+          <div class="certs-grid" id="certsGrid">
+            <!-- Cert 1 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="window.open('assets/Gemini Certification.pdf', '_blank')"
+            >
+              <div class="cert-icon"><i class="bx bx-bot"></i></div>
+              <h3>GEMINI CERTIFICATE</h3>
+              <p>
+                Certified in understanding and applying Google's advanced Gemini
+                AI models, tools, and capabilities.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 2 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="
+                window.open(
+                  'assets/CISCO Cyber_Threat_Management.pdf',
+                  '_blank',
+                )
+              "
+            >
+              <div class="cert-icon"><i class="bx bx-shield"></i></div>
+              <h3>CISCO Cyber Threat Management</h3>
+              <p>
+                In-depth training on cyber threat landscapes, threat
+                intelligence, and modern security operations.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 3 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="
+                window.open('assets/CISCO Network_Defense.pdf', '_blank')
+              "
+            >
+              <div class="cert-icon"><i class="bx bx-network-chart"></i></div>
+              <h3>CISCO Network Defense</h3>
+              <p>
+                Comprehensive certification covering network security
+                architecture, vulnerability assessment, and defense strategies.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 4 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="window.open('assets/IBM PY0101EN .pdf', '_blank')"
+            >
+              <div class="cert-icon"><i class="bx bxl-python"></i></div>
+              <h3>IBM Python for Data Science</h3>
+              <p>
+                Cognitive Class training covering Python programming basics,
+                data structures, and data science libraries.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 5 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="
+                window.open(
+                  'assets/Introduction to Internet of Things 4.0.pdf',
+                  '_blank',
+                )
+              "
+            >
+              <div class="cert-icon"><i class="bx bx-chip"></i></div>
+              <h3>Introduction to IoT 4.0</h3>
+              <p>
+                Advanced NPTEL program focused on Industrial IoT (IIoT), smart
+                factory concepts, and cyber-physical systems.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 6 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="
+                window.open(
+                  'assets/Introduction to Internet of Things.pdf',
+                  '_blank',
+                )
+              "
+            >
+              <div class="cert-icon"><i class="bx bx-server"></i></div>
+              <h3>Introduction to IoT</h3>
+              <p>
+                NPTEL certification highlighting the foundation of IoT
+                architecture, sensor networking, and smart nodes.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 7 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="
+                window.open('assets/bano job ready communication.pdf', '_blank')
+              "
+            >
+              <div class="cert-icon">
+                <i class="bx bx-message-rounded-dots"></i>
+              </div>
+              <h3>Bano Job Ready Communication</h3>
+              <p>
+                Professional workspace communication training, presentation
+                skills, and business correspondence.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 8 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="window.open('assets/bano job ready.pdf', '_blank')"
+            >
+              <div class="cert-icon"><i class="bx bx-briefcase-alt-2"></i></div>
+              <h3>Bano Job Ready</h3>
+              <p>
+                Career training program mapping essential job readiness skills,
+                interview preparation, and professional ethics.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 9 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="
+                window.open('assets/skillup learn cyber security.pdf', '_blank')
+              "
+            >
+              <div class="cert-icon"><i class="bx bx-check-shield"></i></div>
+              <h3>SkillUp Learn Cyber Security</h3>
+              <p>
+                Essential course covering security principles, network scanning,
+                firewalls, and cryptography concepts.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 10 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="window.open('assets/data science IBM.jpeg', '_blank')"
+            >
+              <div class="cert-icon"><i class="bx bx-bar-chart-alt-2"></i></div>
+              <h3>IBM Data Science</h3>
+              <p>
+                Comprehensive certification covering data analysis,
+                visualization, and machine learning methodologies.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 11 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="window.open('assets/BE10XAI.png', '_blank')"
+            >
+              <div class="cert-icon"><i class="bx bx-brain"></i></div>
+              <h3>BE10X AI Workshop</h3>
+              <p>
+                Certification of participation in advanced AI tools workshop for
+                productivity and automation.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 12 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="window.open('assets/Adobe.pdf', '_blank')"
+            >
+              <div class="cert-icon"><i class="bx bxl-adobe"></i></div>
+              <h3>Adobe</h3>
+              <p>
+                Certified professional training focusing on creative digital
+                skills and multimedia production.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 13 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="window.open('assets/AI for Beginners.pdf', '_blank')"
+            >
+              <div class="cert-icon"><i class="bx bx-bot"></i></div>
+              <h3>AI for Beginners</h3>
+              <p>
+                Fundamental concepts of artificial intelligence, machine
+                learning, and its practical applications.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 14 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="
+                window.open(
+                  'assets/Critical Thinking in the AI Era.pdf',
+                  '_blank',
+                )
+              "
+            >
+              <div class="cert-icon"><i class="bx bx-bulb"></i></div>
+              <h3>Critical Thinking in the AI Era</h3>
+              <p>
+                Developing analytical skills to evaluate and navigate AI
+                technologies and their impact.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+
+            <!-- Cert 15 -->
+            <div
+              class="cert-card glass reveal"
+              onclick="window.open('assets/TATA Crucible.pdf', '_blank')"
+            >
+              <div class="cert-icon"><i class="bx bx-trophy"></i></div>
+              <h3>TATA Crucible</h3>
+              <p>
+                Certificate of participation/achievement in the prestigious TATA
+                Crucible business quiz.
+              </p>
+              <div class="cert-link">
+                Go to Certificate <i class="bx bx-right-arrow-alt"></i>
+              </div>
+            </div>
+          </div>
+          <button class="slider-btn" id="slideRight" aria-label="Slide Right">
+            <i class="bx bx-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CONTACT SECTION ========== -->
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-eyebrow">Let’s Connect</p>
+          <h2 class="section-title">Contact <span class="accent">Me</span></h2>
+          <div class="section-line"></div>
+        </div>
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <h3
+              class="accent"
+              style="font-size: 1.5rem; font-weight: 600; margin-bottom: 20px"
+            >
+              Open to Opportunities
+            </h3>
+            <p
+              style="
+                color: var(--text-secondary);
+                margin-bottom: 30px;
+                line-height: 1.7;
+              "
+            >
+              Whether you have a project idea, internship offer, or just want to
+              say hi — my inbox is always open. I'll respond as soon as
+              possible.
+            </p>
+            <div class="contact-details">
+              <a href="mailto:kk6308608@gmail.com" class="contact-link glass">
+                <i class="bx bx-envelope"></i>
+                <span>kk6308608@gmail.com</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/pkrishnakumar-kk"
+                target="_blank"
+                class="contact-link glass"
+              >
+                <i class="bx bxl-linkedin"></i>
+                <span>LinkedIn Profile</span>
+              </a>
+              <a
+                href="https://github.com/KRISHNAKUMARP20"
+                target="_blank"
+                class="contact-link glass"
+              >
+                <i class="bx bxl-github"></i>
+                <span>github.com/KRISHNAKUMARP20</span>
+              </a>
+              <a
+                href="https://www.instagram.com/_kxixh"
+                target="_blank"
+                class="contact-link glass"
+              >
+                <i class="bx bxl-instagram"></i>
+                <span>instagram.com/_kxixh</span>
+              </a>
+            </div>
+          </div>
+          <form class="contact-form glass reveal" id="contactForm">
+            <div class="form-group">
+              <label>FULL NAME</label>
+              <input type="text" id="name" required placeholder="Your Name" />
+            </div>
+            <div class="form-group">
+              <label>EMAIL ADDRESS</label>
+              <input
+                type="email"
+                id="email"
+                required
+                placeholder="your@email.com"
+              />
+            </div>
+            <div class="form-group">
+              <label>SUBJECT</label>
+              <input
+                type="text"
+                id="subject"
+                placeholder="What's this about?"
+              />
+            </div>
+            <div class="form-group">
+              <label>MESSAGE</label>
+              <textarea
+                id="message"
+                rows="5"
+                required
+                placeholder="Tell me about your project..."
+              ></textarea>
+            </div>
+            <button
+              type="submit"
+              class="btn btn-primary"
+              style="
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 8px;
+              "
+            >
+              <i class="bx bx-send"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+      <div
+        class="container footer-content-grid"
+        style="
+          display: flex;
+          flex-direction: column;
+          gap: 40px;
+          padding: 40px 0 20px;
+        "
+      >
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 30px;
+          "
+        >
+          <!-- Logo & Tagline -->
+          <div>
+            <a
+              href="#"
+              class="logo"
+              style="
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--text-primary);
+                text-decoration: none;
+              "
+            >
+              <img
+                src="assets/profiles.png?v=4"
+                alt="KK Profile"
+                style="
+                  width: 36px;
+                  height: 36px;
+                  border-radius: 50%;
+                  object-fit: cover;
+                  border: 1.5px solid var(--accent-cyan);
+                "
+              />
+              <span>KK PORTFOLIO</span>
+            </a>
+            <p
+              style="
+                color: var(--text-secondary);
+                margin-top: 10px;
+                font-size: 0.85rem;
+              "
+            >
+              Krishna Kumar — IT Student & Designer
+            </p>
+          </div>
+
+          <!-- Footer Nav Links -->
+          <div style="display: flex; gap: 24px; flex-wrap: wrap">
+            <a
+              href="#home"
+              style="
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: 0.3s;
+              "
+              onmouseover="this.style.color = 'var(--accent-cyan)'"
+              onmouseout="this.style.color = 'var(--text-secondary)'"
+              >Home</a
+            >
+            <a
+              href="#about"
+              style="
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: 0.3s;
+              "
+              onmouseover="this.style.color = 'var(--accent-cyan)'"
+              onmouseout="this.style.color = 'var(--text-secondary)'"
+              >About</a
+            >
+            <a
+              href="#skills"
+              style="
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: 0.3s;
+              "
+              onmouseover="this.style.color = 'var(--accent-cyan)'"
+              onmouseout="this.style.color = 'var(--text-secondary)'"
+              >Skills</a
+            >
+            <a
+              href="#education"
+              style="
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: 0.3s;
+              "
+              onmouseover="this.style.color = 'var(--accent-cyan)'"
+              onmouseout="this.style.color = 'var(--text-secondary)'"
+              >Education</a
+            >
+            <a
+              href="#experience"
+              style="
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: 0.3s;
+              "
+              onmouseover="this.style.color = 'var(--accent-cyan)'"
+              onmouseout="this.style.color = 'var(--text-secondary)'"
+              >Experience</a
+            >
+            <a
+              href="#projects"
+              style="
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: 0.3s;
+              "
+              onmouseover="this.style.color = 'var(--accent-cyan)'"
+              onmouseout="this.style.color = 'var(--text-secondary)'"
+              >Projects</a
+            >
+            <a
+              href="#contact"
+              style="
+                color: var(--text-secondary);
+                text-decoration: none;
+                font-size: 0.9rem;
+                transition: 0.3s;
+              "
+              onmouseover="this.style.color = 'var(--accent-cyan)'"
+              onmouseout="this.style.color = 'var(--text-secondary)'"
+              >Contact</a
+            >
+          </div>
+
+          <!-- Social Media Icons -->
+          <div style="display: flex; gap: 15px">
+            <a
+              href="https://github.com/KRISHNAKUMARP20"
+              target="_blank"
+              style="
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--text-secondary);
+                text-decoration: none;
+                transition: 0.3s;
+              "
+              onmouseover="
+                this.style.borderColor = 'var(--accent-cyan)';
+                this.style.color = 'var(--text-primary)';
+              "
+              onmouseout="
+                this.style.borderColor = 'rgba(255,255,255,0.08)';
+                this.style.color = 'var(--text-secondary)';
+              "
+              ><i class="bx bxl-github" style="font-size: 1.2rem"></i
+            ></a>
+            <a
+              href="https://www.linkedin.com/in/pkrishnakumar-kk"
+              target="_blank"
+              style="
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--text-secondary);
+                text-decoration: none;
+                transition: 0.3s;
+              "
+              onmouseover="
+                this.style.borderColor = 'var(--accent-cyan)';
+                this.style.color = 'var(--text-primary)';
+              "
+              onmouseout="
+                this.style.borderColor = 'rgba(255,255,255,0.08)';
+                this.style.color = 'var(--text-secondary)';
+              "
+              ><i class="bx bxl-linkedin" style="font-size: 1.2rem"></i
+            ></a>
+            <a
+              href="https://www.instagram.com/_kxixh"
+              target="_blank"
+              style="
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--text-secondary);
+                text-decoration: none;
+                transition: 0.3s;
+              "
+              onmouseover="
+                this.style.borderColor = 'var(--accent-cyan)';
+                this.style.color = 'var(--text-primary)';
+              "
+              onmouseout="
+                this.style.borderColor = 'rgba(255,255,255,0.08)';
+                this.style.color = 'var(--text-secondary)';
+              "
+              ><i class="bx bxl-instagram" style="font-size: 1.2rem"></i
+            ></a>
+            <a
+              href="mailto:kk6308608@gmail.com"
+              style="
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.03);
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--text-secondary);
+                text-decoration: none;
+                transition: 0.3s;
+              "
+              onmouseover="
+                this.style.borderColor = 'var(--accent-cyan)';
+                this.style.color = 'var(--text-primary)';
+              "
+              onmouseout="
+                this.style.borderColor = 'rgba(255,255,255,0.08)';
+                this.style.color = 'var(--text-secondary)';
+              "
+              ><i class="bx bx-envelope" style="font-size: 1.2rem"></i
+            ></a>
+          </div>
+        </div>
+
+        <!-- Divider and Copyright -->
+        <div
+          style="
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding-top: 20px;
+            text-align: center;
+          "
+        >
+          <p style="color: var(--text-secondary); font-size: 0.8rem; margin: 0">
+            &copy; 2026 Krishna Kumar. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- KK Assistant Floating Widget -->
+    <div class="assistant-widget" id="assistantWidget">
+      <button
+        class="assistant-trigger"
+        id="assistantTrigger"
+        aria-label="Open KK Assistant"
+      >
+        <i class="fas fa-comment-dots"></i>
+        <span class="notification-dot"></span>
+      </button>
+
+      <div class="assistant-chat" id="assistantChat">
+        <div class="chat-header">
+          <div class="chat-header-info">
+            <div class="chat-avatar">&lt;KK/&gt;</div>
+            <div>
+              <h4
+                class="text-sm font-bold text-white"
+                style="display: flex; align-items: center"
+              >
+                KK Assistant <span class="ai-badge" id="aiBadge">AI</span>
+              </h4>
+              <span class="chat-status"
+                ><span class="status-dot"></span>Online</span
+              >
+            </div>
+          </div>
+          <button class="chat-close" id="chatClose" aria-label="Close Chat">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <div class="chat-body" id="chatBody">
+          <div class="chat-message bot">
+            <div class="message-content">
+              Hi! I'm KK Assistant. Ask me anything about Krishna Kumar's
+              skills, projects, or background!
+            </div>
+          </div>
+        </div>
+
+        <div class="chat-suggestions" id="chatSuggestions">
+          <button class="suggestion-chip" data-query="skills">
+            What are your skills?
+          </button>
+          <button class="suggestion-chip" data-query="projects">
+            Show me your projects
+          </button>
+          <button class="suggestion-chip" data-query="contact">
+            How can I contact you?
+          </button>
+          <button class="suggestion-chip" data-query="education">
+            Where do you study?
+          </button>
+        </div>
+
+        <form class="chat-input-area" id="chatInputForm">
+          <input
+            type="text"
+            id="chatInput"
+            placeholder="Type a message..."
+            required
+            autocomplete="off"
+          />
+          <button type="submit" class="chat-send-btn" aria-label="Send message">
+            <i class="fas fa-paper-plane"></i>
           </button>
         </form>
       </div>
     </div>
-  </section>
 
-  <!-- ========== FOOTER ========== -->
-  <footer class="footer">
-    <div class="container footer-content-grid"
-      style="display: flex; flex-direction: column; gap: 40px; padding: 40px 0 20px;">
-
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 30px;">
-        <!-- Logo & Tagline -->
-        <div>
-          <a href="#" class="logo"
-            style="display: flex; align-items: center; gap: 8px; font-size: 1.5rem; font-weight: 700; color: var(--text-primary); text-decoration: none;">
-            <img src="assets/profiles.png?v=4" alt="KK Profile"
-              style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover; border: 1.5px solid var(--accent-cyan);" />
-            <span>KK PORTFOLIO</span>
-          </a>
-          <p style="color: var(--text-secondary); margin-top: 10px; font-size: 0.85rem;">Krishna Kumar — IT Student &
-            Designer</p>
-        </div>
-
-        <!-- Footer Nav Links -->
-        <div style="display: flex; gap: 24px; flex-wrap: wrap;">
-          <a href="#home"
-            style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: 0.3s;"
-            onmouseover="this.style.color='var(--accent-cyan)'"
-            onmouseout="this.style.color='var(--text-secondary)'">Home</a>
-          <a href="#about"
-            style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: 0.3s;"
-            onmouseover="this.style.color='var(--accent-cyan)'"
-            onmouseout="this.style.color='var(--text-secondary)'">About</a>
-          <a href="#skills"
-            style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: 0.3s;"
-            onmouseover="this.style.color='var(--accent-cyan)'"
-            onmouseout="this.style.color='var(--text-secondary)'">Skills</a>
-          <a href="#education"
-            style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: 0.3s;"
-            onmouseover="this.style.color='var(--accent-cyan)'"
-            onmouseout="this.style.color='var(--text-secondary)'">Education</a>
-          <a href="#experience"
-            style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: 0.3s;"
-            onmouseover="this.style.color='var(--accent-cyan)'"
-            onmouseout="this.style.color='var(--text-secondary)'">Experience</a>
-          <a href="#projects"
-            style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: 0.3s;"
-            onmouseover="this.style.color='var(--accent-cyan)'"
-            onmouseout="this.style.color='var(--text-secondary)'">Projects</a>
-          <a href="#contact"
-            style="color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: 0.3s;"
-            onmouseover="this.style.color='var(--accent-cyan)'"
-            onmouseout="this.style.color='var(--text-secondary)'">Contact</a>
-        </div>
-
-        <!-- Social Media Icons -->
-        <div style="display: flex; gap: 15px;">
-          <a href="https://github.com/KRISHNAKUMARP20" target="_blank"
-            style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; transition: 0.3s;"
-            onmouseover="this.style.borderColor='var(--accent-cyan)'; this.style.color='var(--text-primary)'"
-            onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.color='var(--text-secondary)'"><i
-              class='bx bxl-github' style="font-size: 1.2rem;"></i></a>
-          <a href="https://www.linkedin.com/in/pkrishnakumar-kk" target="_blank"
-            style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; transition: 0.3s;"
-            onmouseover="this.style.borderColor='var(--accent-cyan)'; this.style.color='var(--text-primary)'"
-            onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.color='var(--text-secondary)'"><i
-              class='bx bxl-linkedin' style="font-size: 1.2rem;"></i></a>
-          <a href="https://www.instagram.com/_kxixh" target="_blank"
-            style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; transition: 0.3s;"
-            onmouseover="this.style.borderColor='var(--accent-cyan)'; this.style.color='var(--text-primary)'"
-            onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.color='var(--text-secondary)'"><i
-              class='bx bxl-instagram' style="font-size: 1.2rem;"></i></a>
-          <a href="mailto:kk6308608@gmail.com"
-            style="width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: var(--text-secondary); text-decoration: none; transition: 0.3s;"
-            onmouseover="this.style.borderColor='var(--accent-cyan)'; this.style.color='var(--text-primary)'"
-            onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.color='var(--text-secondary)'"><i
-              class='bx bx-envelope' style="font-size: 1.2rem;"></i></a>
-        </div>
+    <!-- Custom Toast Notification -->
+    <div id="toastNotification" class="toast-notification glass">
+      <div class="toast-icon" id="toastIcon"></div>
+      <div class="toast-content">
+        <h4 class="toast-title" id="toastTitle">Success</h4>
+        <p class="toast-message" id="toastMessage">
+          Your message has been sent.
+        </p>
       </div>
-
-      <!-- Divider and Copyright -->
-      <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 20px; text-align: center;">
-        <p style="color: var(--text-secondary); font-size: 0.8rem; margin: 0;">&copy; 2026 Krishna Kumar. All rights
-          reserved.</p>
-      </div>
-
     </div>
-  </footer>
 
-  <!-- KK Assistant Floating Widget -->
-  <div class="assistant-widget" id="assistantWidget">
-    <button class="assistant-trigger" id="assistantTrigger" aria-label="Open KK Assistant">
-      <i class="fas fa-comment-dots"></i>
-      <span class="notification-dot"></span>
-    </button>
+    <!-- Slider Controls -->
+    <script>
+      function setupSlider(wrapperId, leftBtnId, rightBtnId) {
+        const wrapper = document.getElementById(wrapperId);
+        const leftBtn = document.getElementById(leftBtnId);
+        const rightBtn = document.getElementById(rightBtnId);
 
-    <div class="assistant-chat" id="assistantChat">
-      <div class="chat-header">
-        <div class="chat-header-info">
-          <div class="chat-avatar">&lt;KK/&gt;</div>
-          <div>
-            <h4 class="text-sm font-bold text-white" style="display: flex; align-items: center;">
-              KK Assistant <span class="ai-badge" id="aiBadge">AI</span>
-            </h4>
-            <span class="chat-status"><span class="status-dot"></span>Online</span>
-          </div>
-        </div>
-        <button class="chat-close" id="chatClose" aria-label="Close Chat"><i class="fas fa-times"></i></button>
-      </div>
+        if (!wrapper || !leftBtn || !rightBtn) return;
 
-      <div class="chat-body" id="chatBody">
-        <div class="chat-message bot">
-          <div class="message-content">
-            Hi! I'm KK Assistant. Ask me anything about Krishna Kumar's skills, projects, or background!
-          </div>
-        </div>
-      </div>
+        const scrollAmount = 350; // amount to scroll per click
 
-      <div class="chat-suggestions" id="chatSuggestions">
-        <button class="suggestion-chip" data-query="skills">What are your skills?</button>
-        <button class="suggestion-chip" data-query="projects">Show me your projects</button>
-        <button class="suggestion-chip" data-query="contact">How can I contact you?</button>
-        <button class="suggestion-chip" data-query="education">Where do you study?</button>
-      </div>
+        leftBtn.addEventListener("click", () => {
+          wrapper.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+        });
 
-      <form class="chat-input-area" id="chatInputForm">
-        <input type="text" id="chatInput" placeholder="Type a message..." required autocomplete="off" />
-        <button type="submit" class="chat-send-btn" aria-label="Send message"><i
-            class="fas fa-paper-plane"></i></button>
-      </form>
-    </div>
-  </div>
+        rightBtn.addEventListener("click", () => {
+          wrapper.scrollBy({ left: scrollAmount, behavior: "smooth" });
+        });
+      }
 
-  <!-- Custom Toast Notification -->
-  <div id="toastNotification" class="toast-notification glass">
-    <div class="toast-icon" id="toastIcon"></div>
-    <div class="toast-content">
-      <h4 class="toast-title" id="toastTitle">Success</h4>
-      <p class="toast-message" id="toastMessage">Your message has been sent.</p>
-    </div>
-  </div>
-
-
-  <!-- Slider Controls -->
-  <script>
-    function setupSlider(wrapperId, leftBtnId, rightBtnId) {
-      const wrapper = document.getElementById(wrapperId);
-      const leftBtn = document.getElementById(leftBtnId);
-      const rightBtn = document.getElementById(rightBtnId);
-      
-      if (!wrapper || !leftBtn || !rightBtn) return;
-      
-      const scrollAmount = 350; // amount to scroll per click
-      
-      leftBtn.addEventListener('click', () => {
-        wrapper.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      // Initialize all sliders when DOM is ready
+      document.addEventListener("DOMContentLoaded", () => {
+        setupSlider("certsGrid", "slideLeft", "slideRight");
+        setupSlider("projectsGrid", "projectSlideLeft", "projectSlideRight");
+        setupSlider("expGrid", "expSlideLeft", "expSlideRight");
       });
-      
-      rightBtn.addEventListener('click', () => {
-        wrapper.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-      });
-    }
-
-    // Initialize all sliders when DOM is ready
-    document.addEventListener('DOMContentLoaded', () => {
-      setupSlider('certsGrid', 'slideLeft', 'slideRight');
-      setupSlider('projectsGrid', 'projectSlideLeft', 'projectSlideRight');
-      setupSlider('expGrid', 'expSlideLeft', 'expSlideRight');
-    });
-  </script>
-  <script src="script.js"></script>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-          .then(reg => console.log('Service Worker registered!', reg))
-          .catch(err => console.error('Service Worker registration failed: ', err));
-      });
-    }
-  </script>
-</body>
-
+    </script>
+    <script src="script.js?v=2"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/sw.js")
+            .then((reg) => console.log("Service Worker registered!", reg))
+            .catch((err) =>
+              console.error("Service Worker registration failed: ", err),
+            );
+        });
+      }
+    </script>
+  </body>
 </html>

@@ -5,20 +5,26 @@
    ============================================================ */
 
 /* ── 1. LOADING SCREEN ──────────────────────────────────────── */
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  const accessBox = document.getElementById('accessBox');
-  const accessText = document.getElementById('accessText');
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+  const loaderContainer = document.getElementById("accessBox");
+  const loadPercentage = document.getElementById("loadPercentage");
+  const loaderProgressBar = document.getElementById("loaderProgressBar");
+
+  let currentPercent = 1;
+  const targetPercent = 100;
+  const duration = 4000; // 4 seconds
+  const intervalTime = duration / targetPercent;
 
   const playChimes = () => {
     try {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
       const ctx = new AudioContext();
       const now = ctx.currentTime;
-      
+
       const osc1 = ctx.createOscillator();
       const gain1 = ctx.createGain();
-      osc1.type = 'sine';
+      osc1.type = "sine";
       osc1.frequency.setValueAtTime(587.33, now); // D5
       osc1.frequency.exponentialRampToValueAtTime(880, now + 0.15); // A5
       gain1.gain.setValueAtTime(0.15, now);
@@ -30,7 +36,7 @@ window.addEventListener('load', () => {
 
       const osc2 = ctx.createOscillator();
       const gain2 = ctx.createGain();
-      osc2.type = 'triangle';
+      osc2.type = "triangle";
       osc2.frequency.setValueAtTime(880, now + 0.1); // A5
       osc2.frequency.exponentialRampToValueAtTime(1174.66, now + 0.25); // D6
       gain2.gain.setValueAtTime(0, now);
@@ -52,72 +58,63 @@ window.addEventListener('load', () => {
     } catch (e) {}
   };
 
-  // Wait for user interaction to enter
-  if (loader && accessBox) {
-    // Mouse Parallax for Loader
-    loader.addEventListener('mousemove', (e) => {
-      if (accessBox.classList.contains('granted')) return;
-      const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-      const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-      accessBox.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
-    });
-    
-    loader.addEventListener('mouseleave', () => {
-      if (!accessBox.classList.contains('granted')) {
-        accessBox.style.transform = `rotateY(0deg) rotateX(0deg)`;
+  // Animate the counter
+  const counterInterval = setInterval(() => {
+    currentPercent++;
+    if (loadPercentage) {
+      loadPercentage.textContent = currentPercent + "%";
+    }
+    if (loaderProgressBar) {
+      loaderProgressBar.style.width = currentPercent + "%";
+    }
+
+    if (currentPercent >= targetPercent) {
+      clearInterval(counterInterval);
+      
+      if (loaderContainer && !loaderContainer.classList.contains("granted")) {
+        loaderContainer.classList.add("granted");
+        playChimes();
+        speakGranted();
+
+        // Phase 2: Fade out loader
+        setTimeout(() => {
+          if (loader) loader.classList.add("hidden");
+          // Kick off hero reveals
+          document.querySelectorAll(".hero .reveal").forEach((el, i) => {
+            setTimeout(() => el.classList.add("visible"), 200 + i * 120);
+          });
+        }, 1500);
       }
-    });
-
-    loader.addEventListener('click', () => {
-      // Prevent multiple clicks
-      if (accessBox.classList.contains('granted')) return;
-      
-      // Phase 1: Shift to Access Granted display
-      accessBox.classList.add('granted');
-      
-      const accessTitle = document.getElementById('accessTitle');
-      const accessInstruction = document.getElementById('accessInstruction');
-      
-      if (accessTitle) accessTitle.innerHTML = 'ACCESS<br>GRANTED';
-      if (accessInstruction) accessInstruction.style.display = 'none';
-
-      playChimes();
-      speakGranted();
-
-      // Phase 2: Fade out loader
-      setTimeout(() => {
-        loader.classList.add('hidden');
-        // Kick off hero reveals
-        document.querySelectorAll('.hero .reveal').forEach((el, i) => {
-          setTimeout(() => el.classList.add('visible'), 200 + i * 120);
-        });
-      }, 1500);
-    });
-  }
+    }
+  }, intervalTime);
 });
 
 /* ── 2. PARTICLE CANVAS ─────────────────────────────────────── */
 (function initParticles() {
-  const canvas = document.getElementById('particleCanvas');
+  const canvas = document.getElementById("particleCanvas");
   if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let W, H, particles = [];
+  const ctx = canvas.getContext("2d");
+  let W,
+    H,
+    particles = [];
   const PARTICLE_COUNT = 80;
-  const COLORS = ['rgba(0,212,255,', 'rgba(37,99,235,', 'rgba(124,58,237,'];
+  const COLORS = ["rgba(0,212,255,", "rgba(37,99,235,", "rgba(124,58,237,"];
 
   function resize() {
-    W = canvas.width  = window.innerWidth;
+    W = canvas.width = window.innerWidth;
     H = canvas.height = window.innerHeight;
   }
 
   class Particle {
-    constructor() { this.reset(); }
+    constructor() {
+      this.reset();
+    }
     reset() {
-      this.x  = Math.random() * W;
-      this.y  = Math.random() * H;
+      this.x = Math.random() * W;
+      this.y = Math.random() * H;
       this.vx = (Math.random() - 0.5) * 0.4;
       this.vy = (Math.random() - 0.5) * 0.4;
-      this.r  = Math.random() * 1.8 + 0.4;
+      this.r = Math.random() * 1.8 + 0.4;
       this.alpha = Math.random() * 0.5 + 0.1;
       this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
     }
@@ -130,7 +127,7 @@ window.addEventListener('load', () => {
     draw() {
       ctx.beginPath();
       ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-      ctx.fillStyle = this.color + this.alpha + ')';
+      ctx.fillStyle = this.color + this.alpha + ")";
       ctx.fill();
     }
   }
@@ -155,54 +152,71 @@ window.addEventListener('load', () => {
 
   function animate() {
     ctx.clearRect(0, 0, W, H);
-    particles.forEach(p => { p.update(); p.draw(); });
+    particles.forEach((p) => {
+      p.update();
+      p.draw();
+    });
     drawConnections();
     requestAnimationFrame(animate);
   }
 
   resize();
-  window.addEventListener('resize', resize);
+  window.addEventListener("resize", resize);
   for (let i = 0; i < PARTICLE_COUNT; i++) particles.push(new Particle());
   animate();
 })();
 
 /* ── 3. CUSTOM CURSOR ───────────────────────────────────────── */
 (function initCursor() {
-  const dot     = document.getElementById('cursorDot');
-  const outline = document.getElementById('cursorOutline');
+  const dot = document.getElementById("cursorDot");
+  const outline = document.getElementById("cursorOutline");
   if (!dot || !outline) return;
 
-  let ox = 0, oy = 0;
-  let tx = 0, ty = 0;
+  let ox = 0,
+    oy = 0;
+  let tx = 0,
+    ty = 0;
 
-  document.addEventListener('mousemove', e => {
-    tx = e.clientX; ty = e.clientY;
-    dot.style.left = tx + 'px';
-    dot.style.top  = ty + 'px';
+  document.addEventListener("mousemove", (e) => {
+    tx = e.clientX;
+    ty = e.clientY;
+    dot.style.left = tx + "px";
+    dot.style.top = ty + "px";
   });
 
   function animateOutline() {
     ox += (tx - ox) * 0.12;
     oy += (ty - oy) * 0.12;
-    outline.style.left = ox + 'px';
-    outline.style.top  = oy + 'px';
+    outline.style.left = ox + "px";
+    outline.style.top = oy + "px";
     requestAnimationFrame(animateOutline);
   }
   animateOutline();
 
   // Hover effect on interactive elements
-  const hoverables = document.querySelectorAll('a, button, input, textarea, .project-card, .skill-item, .cert-card');
-  hoverables.forEach(el => {
-    el.addEventListener('mouseenter', () => outline.classList.add('hovered'));
-    el.addEventListener('mouseleave', () => outline.classList.remove('hovered'));
+  const hoverables = document.querySelectorAll(
+    "a, button, input, textarea, .project-card, .skill-item, .cert-card",
+  );
+  hoverables.forEach((el) => {
+    el.addEventListener("mouseenter", () => outline.classList.add("hovered"));
+    el.addEventListener("mouseleave", () =>
+      outline.classList.remove("hovered"),
+    );
   });
 })();
 
 /* ── 4. TYPED TEXT EFFECT ───────────────────────────────────── */
 (function initTyped() {
-  const el     = document.getElementById('typedText');
-  const words  = ['Web Designer', 'Cybersecurity', 'IT Student', 'Problem Solver'];
-  let wIdx = 0, cIdx = 0, deleting = false;
+  const el = document.getElementById("typedText");
+  const words = [
+    "Web Designer",
+    "Cybersecurity",
+    "IT Student",
+    "Problem Solver",
+  ];
+  let wIdx = 0,
+    cIdx = 0,
+    deleting = false;
 
   function type() {
     const word = words[wIdx];
@@ -231,162 +245,176 @@ window.addEventListener('load', () => {
 
 /* ── 5. STICKY NAVBAR + ACTIVE LINKS ───────────────────────── */
 (function initNavbar() {
-  const navbar   = document.getElementById('navbar');
-  const links    = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('section[id]');
+  const navbar = document.getElementById("navbar");
+  const links = document.querySelectorAll(".nav-link");
+  const sections = document.querySelectorAll("section[id]");
 
   function onScroll() {
     // Sticky glass effect
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    navbar.classList.toggle("scrolled", window.scrollY > 60);
 
     // Active link highlighting
-    let current = '';
-    sections.forEach(s => {
+    let current = "";
+    sections.forEach((s) => {
       if (window.scrollY >= s.offsetTop - 120) current = s.id;
     });
-    links.forEach(l => {
-      l.classList.toggle('active', l.getAttribute('href') === '#' + current);
+    links.forEach((l) => {
+      l.classList.toggle("active", l.getAttribute("href") === "#" + current);
     });
 
-
     // Back-to-top
-    const btn = document.getElementById('backToTop');
-    if (btn) btn.classList.toggle('visible', window.scrollY > 400);
+    const btn = document.getElementById("backToTop");
+    if (btn) btn.classList.toggle("visible", window.scrollY > 400);
   }
 
-  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener("scroll", onScroll, { passive: true });
 
   // Hamburger menu
-  const hamburger = document.getElementById('hamburger');
-  const navLinks  = document.getElementById('navLinks');
+  const hamburger = document.getElementById("hamburger");
+  const navLinks = document.getElementById("navLinks");
 
-  hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('open');
-    navLinks.classList.toggle('open');
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("open");
+    navLinks.classList.toggle("open");
   });
 
   // Close mobile menu on link click
-  links.forEach(l => {
-    l.addEventListener('click', () => {
-      hamburger.classList.remove('open');
-      navLinks.classList.remove('open');
+  links.forEach((l) => {
+    l.addEventListener("click", () => {
+      hamburger.classList.remove("open");
+      navLinks.classList.remove("open");
     });
   });
 })();
 
 /* ── 6. BACK TO TOP ─────────────────────────────────────────── */
-const backToTopBtn = document.getElementById('backToTop');
+const backToTopBtn = document.getElementById("backToTop");
 if (backToTopBtn) {
-  backToTopBtn.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  backToTopBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
 
 /* ── 7. SCROLL REVEAL ───────────────────────────────────────── */
 (function initReveal() {
-  const revealEls = document.querySelectorAll('.reveal');
-  
+  const revealEls = document.querySelectorAll(".reveal");
+
   let staggerDelay = 0;
   let revealTimeout = null;
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        if (!entry.target.classList.contains('visible')) {
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, staggerDelay);
-          
-          staggerDelay += 150; // Stagger each element by 150ms
-          
-          // Reset stagger delay after a short pause in intersection events
-          clearTimeout(revealTimeout);
-          revealTimeout = setTimeout(() => {
-            staggerDelay = 0;
-          }, 300);
-        }
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (!entry.target.classList.contains("visible")) {
+            setTimeout(() => {
+              entry.target.classList.add("visible");
+            }, staggerDelay);
 
-  revealEls.forEach(el => io.observe(el));
+            staggerDelay += 150; // Stagger each element by 150ms
+
+            // Reset stagger delay after a short pause in intersection events
+            clearTimeout(revealTimeout);
+            revealTimeout = setTimeout(() => {
+              staggerDelay = 0;
+            }, 300);
+          }
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" },
+  );
+
+  revealEls.forEach((el) => io.observe(el));
 })();
 
 /* ── 8. SKILL BAR ANIMATION ─────────────────────────────────── */
 (function initSkillBars() {
-  const fills = document.querySelectorAll('.skill-fill');
+  const fills = document.querySelectorAll(".skill-fill");
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const fill  = entry.target;
-        const width = fill.getAttribute('data-width');
-        // Small delay so the card reveal finishes first
-        setTimeout(() => { fill.style.width = width + '%'; }, 200);
-        io.unobserve(fill);
-      }
-    });
-  }, { threshold: 0.5 });
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const fill = entry.target;
+          const width = fill.getAttribute("data-width");
+          // Small delay so the card reveal finishes first
+          setTimeout(() => {
+            fill.style.width = width + "%";
+          }, 200);
+          io.unobserve(fill);
+        }
+      });
+    },
+    { threshold: 0.5 },
+  );
 
-  fills.forEach(f => io.observe(f));
+  fills.forEach((f) => io.observe(f));
 })();
 
 /* ── 9. COUNTER ANIMATION ───────────────────────────────────── */
 (function initCounters() {
-  const counters = document.querySelectorAll('.stat-number');
+  const counters = document.querySelectorAll(".stat-number");
 
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el     = entry.target;
-      const target = +el.getAttribute('data-target');
-      const start  = performance.now();
-      const dur    = 1600;
+  const io = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = +el.getAttribute("data-target");
+        const start = performance.now();
+        const dur = 1600;
 
-      function tick(now) {
-        const progress = Math.min((now - start) / dur, 1);
-        // Ease-out
-        const ease = 1 - Math.pow(1 - progress, 3);
-        el.textContent = Math.floor(ease * target);
-        if (progress < 1) requestAnimationFrame(tick);
-        else el.textContent = target;
-      }
-      requestAnimationFrame(tick);
-      io.unobserve(el);
-    });
-  }, { threshold: 0.6 });
+        function tick(now) {
+          const progress = Math.min((now - start) / dur, 1);
+          // Ease-out
+          const ease = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.floor(ease * target);
+          if (progress < 1) requestAnimationFrame(tick);
+          else el.textContent = target;
+        }
+        requestAnimationFrame(tick);
+        io.unobserve(el);
+      });
+    },
+    { threshold: 0.6 },
+  );
 
-  counters.forEach(c => io.observe(c));
+  counters.forEach((c) => io.observe(c));
 })();
 
 /* ── 10. PARALLAX ───────────────────────────────────────────── */
 (function initParallax() {
-  const hero = document.querySelector('.hero');
+  const hero = document.querySelector(".hero");
   if (!hero) return;
 
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    hero.style.backgroundPositionY = y * 0.3 + 'px';
-    const frame = hero.querySelector('.image-frame');
-    if (frame) frame.style.transform = `translateY(${y * 0.08}px)`;
-  }, { passive: true });
+  window.addEventListener(
+    "scroll",
+    () => {
+      const y = window.scrollY;
+      hero.style.backgroundPositionY = y * 0.3 + "px";
+      const frame = hero.querySelector(".image-frame");
+      if (frame) frame.style.transform = `translateY(${y * 0.08}px)`;
+    },
+    { passive: true },
+  );
 })();
 
 /* ── 11. TOAST NOTIFICATION ──────────────────────────────────── */
-function showToast(title, message, type = 'success') {
-  const toast = document.getElementById('toastNotification');
-  const toastIcon = document.getElementById('toastIcon');
-  const toastTitle = document.getElementById('toastTitle');
-  const toastMessage = document.getElementById('toastMessage');
-  
+function showToast(title, message, type = "success") {
+  const toast = document.getElementById("toastNotification");
+  const toastIcon = document.getElementById("toastIcon");
+  const toastTitle = document.getElementById("toastTitle");
+  const toastMessage = document.getElementById("toastMessage");
+
   if (!toast || !toastIcon || !toastTitle || !toastMessage) return;
 
   // Set content
   toastTitle.textContent = title;
   toastMessage.textContent = message;
-  
+
   // Set icon based on type
-  if (type === 'success') {
+  if (type === "success") {
     toastIcon.innerHTML = "<i class='bx bx-check-circle'></i>";
   } else {
     toastIcon.innerHTML = "<i class='bx bx-error-circle'></i>";
@@ -397,30 +425,34 @@ function showToast(title, message, type = 'success') {
 
   // Hide toast after 4 seconds
   setTimeout(() => {
-    toast.classList.remove('show');
+    toast.classList.remove("show");
   }, 4000);
 }
 
 /* ── 12. CONTACT FORM ───────────────────────────────────────── */
 (function initForm() {
-  const form   = document.getElementById('contactForm');
+  const form = document.getElementById("contactForm");
   if (!form) return;
 
-  form.addEventListener('submit', e => {
+  form.addEventListener("submit", (e) => {
     e.preventDefault();
 
-    const name    = document.getElementById('name').value.trim();
-    const email   = document.getElementById('email').value.trim();
-    const message = document.getElementById('message').value.trim();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
 
     // Basic validation
     if (!name || !email || !message) {
-      showToast('Validation Error', 'Please fill in all fields.', 'error');
+      showToast("Validation Error", "Please fill in all fields.", "error");
       return;
     }
 
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      showToast('Validation Error', 'Please enter a valid email address.', 'error');
+      showToast(
+        "Validation Error",
+        "Please enter a valid email address.",
+        "error",
+      );
       return;
     }
 
@@ -429,140 +461,289 @@ function showToast(title, message, type = 'success') {
     btn.disabled = true;
     btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Sending...';
 
-    fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
+    const subjectInput = document.getElementById("subject");
+    const userSubject = subjectInput ? subjectInput.value.trim() : "";
+    const finalSubject = userSubject 
+      ? `Anyone Replying in YourPortfolio - ${userSubject}` 
+      : "Anyone Replying in YourPortfolio";
+
+    fetch("https://api.web3forms.com/submit", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        "Content-Type": "application/json",
+        Accept: "application/json",
       },
       body: JSON.stringify({
-        access_key: 'e4a85767-2ae7-4851-9567-f6474f6172c0',
+        access_key: "e4a85767-2ae7-4851-9567-f6474f6172c0",
         name: name,
         email: email,
-        message: message
+        message: message,
+        subject: finalSubject,
+        from_name: "KK WORLD"
+      }),
+    })
+      .then(async (response) => {
+        if (response.status == 200) {
+          showToast(
+            "Message Sent",
+            "Thank you! I'll get back to you soon.",
+            "success",
+          );
+          form.reset();
+        } else {
+          showToast(
+            "Send Failed",
+            "Failed to send message. Please try again.",
+            "error",
+          );
+        }
       })
-    })
-    .then(async (response) => {
-      if (response.status == 200) {
-        showToast('Message Sent', 'Thank you! I\'ll get back to you soon.', 'success');
-        form.reset();
-      } else {
-        showToast('Send Failed', 'Failed to send message. Please try again.', 'error');
-      }
-    })
-    .catch(error => {
-      console.log(error);
-      showToast('Error', 'Something went wrong! Please try again.', 'error');
-    })
-    .finally(() => {
-      btn.disabled = false;
-      btn.innerHTML = 'Send Message <i class="bx bx-send"></i>';
-    });
+      .catch((error) => {
+        console.log(error);
+        showToast("Error", "Something went wrong! Please try again.", "error");
+      })
+      .finally(() => {
+        btn.disabled = false;
+        btn.innerHTML = 'Send Message <i class="bx bx-send"></i>';
+      });
   });
 })();
 
 /* ── 12. SMOOTH SCROLL FOR ALL ANCHOR LINKS ─────────────────── */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    const target = document.querySelector(a.getAttribute('href'));
+document.querySelectorAll('a[href^="#"]').forEach((a) => {
+  a.addEventListener("click", (e) => {
+    const target = document.querySelector(a.getAttribute("href"));
     if (target) {
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   });
 });
 
 /* ── 13. CURSOR HOVER TRACKING (dynamic re-query for cards) ─── */
 // Re-attach cursor hover to dynamically relevant elements
-document.addEventListener('DOMContentLoaded', () => {
-  const outline  = document.getElementById('cursorOutline');
+document.addEventListener("DOMContentLoaded", () => {
+  const outline = document.getElementById("cursorOutline");
   if (!outline) return;
 
-  document.querySelectorAll('.achievement-card, .about-card, .timeline-content, .contact-link').forEach(el => {
-    el.addEventListener('mouseenter', () => outline.classList.add('hovered'));
-    el.addEventListener('mouseleave', () => outline.classList.remove('hovered'));
-  });
+  document
+    .querySelectorAll(
+      ".achievement-card, .about-card, .timeline-content, .contact-link",
+    )
+    .forEach((el) => {
+      el.addEventListener("mouseenter", () => outline.classList.add("hovered"));
+      el.addEventListener("mouseleave", () =>
+        outline.classList.remove("hovered"),
+      );
+    });
 });
-
 
 /* ── 14. KK ASSISTANT FLOATING WIDGET ── */
 (function initKKAssistant() {
-  const assistantTrigger = document.getElementById('assistantTrigger');
-  const assistantChat = document.getElementById('assistantChat');
-  const chatClose = document.getElementById('chatClose');
-  const chatInputForm = document.getElementById('chatInputForm');
-  const chatInput = document.getElementById('chatInput');
-  const chatBody = document.getElementById('chatBody');
-  const suggestionChips = document.querySelectorAll('.suggestion-chip');
-  const notificationDot = document.querySelector('.notification-dot');
+  const assistantTrigger = document.getElementById("assistantTrigger");
+  const assistantChat = document.getElementById("assistantChat");
+  const chatClose = document.getElementById("chatClose");
+  const chatInputForm = document.getElementById("chatInputForm");
+  const chatInput = document.getElementById("chatInput");
+  const chatBody = document.getElementById("chatBody");
+  const suggestionChips = document.querySelectorAll(".suggestion-chip");
+  const notificationDot = document.querySelector(".notification-dot");
 
   if (!assistantTrigger || !assistantChat) return;
 
   // Toggle Chat window
-  assistantTrigger.addEventListener('click', () => {
-    assistantChat.classList.add('open');
-    if (notificationDot) notificationDot.style.display = 'none';
+  assistantTrigger.addEventListener("click", () => {
+    assistantChat.classList.add("open");
+    if (notificationDot) notificationDot.style.display = "none";
   });
 
   if (chatClose) {
-    chatClose.addEventListener('click', (e) => {
+    chatClose.addEventListener("click", (e) => {
       e.stopPropagation();
-      assistantChat.classList.remove('open');
+      assistantChat.classList.remove("open");
     });
   }
 
   // Answer matching logic
   const responseCategories = [
     {
-      id: 'greetings',
-      keywords: ['hello', 'hi', 'hey', 'greetings', 'good morning', 'good afternoon', 'good evening', 'yo', 'sup'],
-      response: "Hello! I'm the KK Assistant. How can I help you today? You can ask about Krishna Kumar's skills, projects, internships, education, achievements, certifications, or contact details!"
+      id: "greetings",
+      keywords: [
+        "hello",
+        "hi",
+        "hey",
+        "greetings",
+        "good morning",
+        "good afternoon",
+        "good evening",
+        "yo",
+        "sup",
+      ],
+      response:
+        "Hello! I'm the KK Assistant. How can I help you today? You can ask about Krishna Kumar's skills, projects, internships, education, achievements, certifications, or contact details!",
     },
     {
-      id: 'about',
-      keywords: ['about', 'who are you', 'your name', 'krishna', 'krishnakumar', 'profile', 'bio', 'yourself', 'who is', 'who\'s'],
-      response: "Krishna Kumar is a Web Designer, Cybersecurity enthusiast, and an Information Technology student (B.Tech, 3rd year) at M. Kumarasamy College of Engineering. He is passionate about building technology that solves problems, open-source UNIX/Linux systems, and secure application development."
+      id: "about",
+      keywords: [
+        "about",
+        "who are you",
+        "your name",
+        "krishna",
+        "krishnakumar",
+        "profile",
+        "bio",
+        "yourself",
+        "who is",
+        "who's",
+      ],
+      response:
+        "Krishna Kumar is a Web Designer, Cybersecurity enthusiast, and an Information Technology student (B.Tech, 3rd year) at M. Kumarasamy College of Engineering. He is passionate about building technology that solves problems, open-source UNIX/Linux systems, and secure application development.",
     },
     {
-      id: 'skills',
-      keywords: ['skill', 'tool', 'tech', 'stack', 'languages', 'program', 'java', 'c', 'javascript', 'css', 'html', 'python', 'flask', 'mysql', 'mongodb', 'mariadb', 'git', 'github', 'what can you do', 'develop'],
-      response: "Krishna Kumar has strong technical skills in:\n- **Programming**: Java, C\n- **Web Technologies**: HTML, CSS, JavaScript, Flask\n- **Databases**: MySQL, MariaDB, MongoDB\n- **Operating Systems**: Linux (Ubuntu, Parrot OS, Kali Linux)\n- **Version Control**: Git, GitHub"
+      id: "skills",
+      keywords: [
+        "skill",
+        "tool",
+        "tech",
+        "stack",
+        "languages",
+        "program",
+        "java",
+        "c",
+        "javascript",
+        "css",
+        "html",
+        "python",
+        "flask",
+        "mysql",
+        "mongodb",
+        "mariadb",
+        "git",
+        "github",
+        "what can you do",
+        "develop",
+      ],
+      response:
+        "Krishna Kumar has strong technical skills in:\n- **Programming**: Java, C\n- **Web Technologies**: HTML, CSS, JavaScript, Flask\n- **Databases**: MySQL, MariaDB, MongoDB\n- **Operating Systems**: Linux (Ubuntu, Parrot OS, Kali Linux)\n- **Version Control**: Git, GitHub",
     },
     {
-      id: 'projects',
-      keywords: ['project', 'build', 'work', 'make', 'website', 'app', 'account monitor', 'hotel booking', 'smart cab', 'taxi', 'hotel', 'compromise', 'developments'],
-      response: "Krishna has built several notable projects:\n1. **Account Monitor**: A React-based web app designed to check if social media accounts have been compromised or leaked online. [Visit site](https://accmonitor.vercel.app)\n2. **KK Hotel Booking**: A full-featured booking client covering hotels across India with search, filter, and reservation flows. [Visit site](https://kk-hotel.vercel.app)\n3. **KK Smart Cab**: An interactive cab booking client supporting quick routing calculations and maps. [Visit site](https://kk-smart-cab.vercel.app)"
+      id: "projects",
+      keywords: [
+        "project",
+        "build",
+        "work",
+        "make",
+        "website",
+        "app",
+        "account monitor",
+        "hotel booking",
+        "smart cab",
+        "taxi",
+        "hotel",
+        "compromise",
+        "developments",
+      ],
+      response:
+        "Krishna has built several notable projects:\n1. **Account Monitor**: A React-based web app designed to check if social media accounts have been compromised or leaked online. [Visit site](https://accmonitor.vercel.app)\n2. **KK Hotel Booking**: A full-featured booking client covering hotels across India with search, filter, and reservation flows. [Visit site](https://kk-hotel.vercel.app)\n3. **KK Smart Cab**: An interactive cab booking client supporting quick routing calculations and maps. [Visit site](https://kk-smart-cab.vercel.app)",
     },
     {
-      id: 'experience',
-      keywords: ['experience', 'intern', 'work', 'job', 'training', 'kaashiv', 'istudio', 'career', 'corporate'],
-      response: "Krishna has gained industry experience through internships:\n1. **Cyber Security Intern** at kaashiv InfoTech (June – July 2026): Worked on security analysis, network monitoring, Linux shell administration, and system vulnerability mitigation.\n2. **Web Development Intern** at iStudio Technologies (Dec 2025 – Jan 2026): Collaborated on UI/UX optimization and built clean, responsive user interfaces."
+      id: "experience",
+      keywords: [
+        "experience",
+        "intern",
+        "work",
+        "job",
+        "training",
+        "kaashiv",
+        "istudio",
+        "career",
+        "corporate",
+      ],
+      response:
+        "Krishna has gained industry experience through internships:\n1. **Cyber Security Intern** at kaashiv InfoTech (June – July 2026): Worked on security analysis, network monitoring, Linux shell administration, and system vulnerability mitigation.\n2. **Web Development Intern** at iStudio Technologies (Dec 2025 – Jan 2026): Collaborated on UI/UX optimization and built clean, responsive user interfaces.",
     },
     {
-      id: 'education',
-      keywords: ['education', 'study', 'college', 'degree', 'university', 'btech', 'it', 'school', 'hsc', 'sslc', 'gpa', 'marks', 'kumarasamy', 'mkce', 'learning'],
-      response: "Krishna's academic background:\n- **B.Tech in Information Technology** (2024 - 2028) at M. Kumarasamy College of Engineering (Current CGPA: 7.5/10.0)\n- **Higher Secondary Education (HSC)** in Bio-Maths (2022 - 2024) – 72.33%\n- **Secondary School Education (SSLC)** (2021 - 2022) – 83.4%"
+      id: "education",
+      keywords: [
+        "education",
+        "study",
+        "college",
+        "degree",
+        "university",
+        "btech",
+        "it",
+        "school",
+        "hsc",
+        "sslc",
+        "gpa",
+        "marks",
+        "kumarasamy",
+        "mkce",
+        "learning",
+      ],
+      response:
+        "Krishna's academic background:\n- **B.Tech in Information Technology** (2024 - 2028) at M. Kumarasamy College of Engineering (Current CGPA: 7.5/10.0)\n- **Higher Secondary Education (HSC)** in Bio-Maths (2022 - 2024) – 72.33%\n- **Secondary School Education (SSLC)** (2021 - 2022) – 83.4%",
     },
     {
-      id: 'contact',
-      keywords: ['contact', 'email', 'reach', 'phone', 'mail', 'linkedin', 'github', 'instagram', 'insta', 'social', 'address', 'message', 'send', 'connect'],
-      response: "You can connect with Krishna Kumar via:\n- **Email**: [kk6308608@gmail.com](mailto:kk6308608@gmail.com)\n- **LinkedIn**: [pkrishnakumar-kk](https://www.linkedin.com/in/pkrishnakumar-kk)\n- **GitHub**: [KRISHNAKUMARP20](https://github.com/KRISHNAKUMARP20)\n- **Instagram**: [Instagram Profile](https://instagram.com/)"
+      id: "contact",
+      keywords: [
+        "contact",
+        "email",
+        "reach",
+        "phone",
+        "mail",
+        "linkedin",
+        "github",
+        "instagram",
+        "insta",
+        "social",
+        "address",
+        "message",
+        "send",
+        "connect",
+      ],
+      response:
+        "You can connect with Krishna Kumar via:\n- **Email**: [kk6308608@gmail.com](mailto:kk6308608@gmail.com)\n- **LinkedIn**: [pkrishnakumar-kk](https://www.linkedin.com/in/pkrishnakumar-kk)\n- **GitHub**: [KRISHNAKUMARP20](https://github.com/KRISHNAKUMARP20)\n- **Instagram**: [Instagram Profile](https://instagram.com/)",
     },
     {
-      id: 'achievements',
-      keywords: ['achievement', 'award', 'prize', 'win', 'mr coder', 'ekna', 'fest', 'competition', 'hackathon'],
-      response: "Krishna won the **Mr. Coder** award at the EKNA '25 National Level Techno Cultural Fest coding event."
+      id: "achievements",
+      keywords: [
+        "achievement",
+        "award",
+        "prize",
+        "win",
+        "mr coder",
+        "ekna",
+        "fest",
+        "competition",
+        "hackathon",
+      ],
+      response:
+        "Krishna won the **Mr. Coder** award at the EKNA '25 National Level Techno Cultural Fest coding event.",
     },
     {
-      id: 'certifications',
-      keywords: ['certification', 'cert', 'course', 'cisco', 'ibm', 'iot', 'nptel', 'bano', 'be10x', 'credential'],
-      response: "Krishna has earned several certifications including:\n- **CISCO** Network Defense & Cyber Threat Management\n- **IBM** Data Science Foundation & Python Basics\n- **NPTEL** Internet of Things (IoT) & IoT 4.0\n- **SkillUp** Cyber Security\n- **Bano** Job Ready & Workspace Communication\n- **BE10X** AI Productivity Workshop"
+      id: "certifications",
+      keywords: [
+        "certification",
+        "cert",
+        "course",
+        "cisco",
+        "ibm",
+        "iot",
+        "nptel",
+        "bano",
+        "be10x",
+        "credential",
+      ],
+      response:
+        "Krishna has earned several certifications including:\n- **CISCO** Network Defense & Cyber Threat Management\n- **IBM** Data Science Foundation & Python Basics\n- **NPTEL** Internet of Things (IoT) & IoT 4.0\n- **SkillUp** Cyber Security\n- **Bano** Job Ready & Workspace Communication\n- **BE10X** AI Productivity Workshop",
     },
     {
-      id: 'resume',
-      keywords: ['resume', 'cv', 'biodata', 'profile document'],
-      response: "You can view Krishna's resume by clicking the 'View Resume' button in the Hero section, or download it here: [KK_Resume.pdf](assets/KK_Resume.pdf)."
-    }
+      id: "resume",
+      keywords: ["resume", "cv", "biodata", "profile document"],
+      response:
+        "You can view Krishna's resume by clicking the 'View Resume' button in the Hero section, or download it here: [KK_Resume.pdf](assets/KK_Resume.pdf).",
+    },
   ];
 
   const getResponse = (query) => {
@@ -570,9 +751,9 @@ document.addEventListener('DOMContentLoaded', () => {
     let bestMatch = null;
     let maxScore = 0;
 
-    responseCategories.forEach(category => {
+    responseCategories.forEach((category) => {
       let score = 0;
-      category.keywords.forEach(keyword => {
+      category.keywords.forEach((keyword) => {
         if (q.includes(keyword)) {
           // Add extra weight for exact match word or if keyword starts/ends nicely
           score += 1;
@@ -593,22 +774,22 @@ document.addEventListener('DOMContentLoaded', () => {
     return "I'm not sure I understand that question completely. Try asking about 'skills', 'projects', 'internships', 'education', 'achievements', 'certifications', 'resume', or 'contact'!";
   };
 
-
   const addMessage = (text, sender) => {
-    const msg = document.createElement('div');
+    const msg = document.createElement("div");
     msg.className = `chat-message ${sender}`;
-    msg.innerHTML = `<div class="message-content">` + text.replace(/\n/g, '<br>') + `</div>`;
+    msg.innerHTML =
+      `<div class="message-content">` + text.replace(/\n/g, "<br>") + `</div>`;
     chatBody.appendChild(msg);
     chatBody.scrollTop = chatBody.scrollHeight;
   };
 
   // Gemini API key settings
-  const apiKey = 'AQ.Ab8RN6JlrBuRoDVkGSazHh72uR7NLtLIoCgYVD4CltUjNTivkA';
-  const aiBadge = document.getElementById('aiBadge');
+  const apiKey = "AQ.Ab8RN6JlrBuRoDVkGSazHh72uR7NLtLIoCgYVD4CltUjNTivkA";
+  const aiBadge = document.getElementById("aiBadge");
 
   if (aiBadge) {
-    aiBadge.textContent = 'AI';
-    aiBadge.className = 'ai-badge';
+    aiBadge.textContent = "AI";
+    aiBadge.className = "ai-badge";
   }
 
   const callGeminiAPI = async (userText) => {
@@ -635,32 +816,35 @@ Context of Krishna Kumar:
     try {
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
       const response = await fetch(endpoint, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           contents: [{ parts: [{ text: userText }] }],
           systemInstruction: {
-            parts: [{ text: systemPrompt }]
-          }
-        })
+            parts: [{ text: systemPrompt }],
+          },
+        }),
       });
       const data = await response.json();
       if (data && data.candidates && data.candidates[0].content.parts[0].text) {
         return data.candidates[0].content.parts[0].text.trim();
       }
-      throw new Error('Invalid response structure');
+      throw new Error("Invalid response structure");
     } catch (err) {
       console.error(err);
-      return "Sorry, I had trouble reaching my AI brain. Let me answer using offline rules instead:\n\n" + getResponse(userText);
+      return (
+        "Sorry, I had trouble reaching my AI brain. Let me answer using offline rules instead:\n\n" +
+        getResponse(userText)
+      );
     }
   };
 
   const simulateBotResponse = async (userText) => {
     // Show typing indicator
-    const typing = document.createElement('div');
-    typing.className = 'chat-message bot typing-msg';
+    const typing = document.createElement("div");
+    typing.className = "chat-message bot typing-msg";
     typing.innerHTML = `<div class="typing-indicator"><span></span><span></span><span></span></div>`;
     chatBody.appendChild(typing);
     chatBody.scrollTop = chatBody.scrollHeight;
@@ -670,30 +854,30 @@ Context of Krishna Kumar:
       reply = await callGeminiAPI(userText);
     } else {
       // Simulate typing delay for offline
-      await new Promise(resolve => setTimeout(resolve, 800));
+      await new Promise((resolve) => setTimeout(resolve, 800));
       reply = getResponse(userText);
     }
 
     typing.remove();
-    addMessage(reply, 'bot');
+    addMessage(reply, "bot");
   };
 
   if (chatInputForm) {
-    chatInputForm.addEventListener('submit', (e) => {
+    chatInputForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const text = chatInput.value.trim();
       if (!text) return;
 
-      addMessage(text, 'user');
-      chatInput.value = '';
+      addMessage(text, "user");
+      chatInput.value = "";
       simulateBotResponse(text);
     });
   }
 
-  suggestionChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      const query = chip.getAttribute('data-query');
-      addMessage(chip.textContent, 'user');
+  suggestionChips.forEach((chip) => {
+    chip.addEventListener("click", () => {
+      const query = chip.getAttribute("data-query");
+      addMessage(chip.textContent, "user");
       simulateBotResponse(query);
     });
   });
@@ -701,69 +885,115 @@ Context of Krishna Kumar:
 
 /* ── 15. CERTIFICATIONS SLIDER CONTROL ── */
 (function initCertsSlider() {
-  const grid = document.getElementById('certsGrid');
-  const btnLeft = document.getElementById('slideLeft');
-  const btnRight = document.getElementById('slideRight');
-  
+  const grid = document.getElementById("certsGrid");
+  const btnLeft = document.getElementById("slideLeft");
+  const btnRight = document.getElementById("slideRight");
+
   if (!grid || !btnLeft || !btnRight) return;
 
   const scrollAmount = 374; // card width (350px) + gap (24px)
 
-  btnLeft.addEventListener('click', () => {
-    grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  btnLeft.addEventListener("click", () => {
+    grid.scrollBy({ left: -scrollAmount, behavior: "smooth" });
   });
 
-  btnRight.addEventListener('click', () => {
-    grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  btnRight.addEventListener("click", () => {
+    grid.scrollBy({ left: scrollAmount, behavior: "smooth" });
   });
 })();
 
 /* ── 16. PROJECTS SLIDER CONTROL ── */
 (function initProjectsSlider() {
-  const grid = document.getElementById('projectsGrid');
-  const btnLeft = document.getElementById('projectSlideLeft');
-  const btnRight = document.getElementById('projectSlideRight');
-  
+  const grid = document.getElementById("projectsGrid");
+  const btnLeft = document.getElementById("projectSlideLeft");
+  const btnRight = document.getElementById("projectSlideRight");
+
   if (!grid || !btnLeft || !btnRight) return;
 
   const scrollAmount = 378; // card width (350px) + gap (28px)
 
-  btnLeft.addEventListener('click', () => {
-    grid.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  btnLeft.addEventListener("click", () => {
+    grid.scrollBy({ left: -scrollAmount, behavior: "smooth" });
   });
 
-  btnRight.addEventListener('click', () => {
-    grid.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  btnRight.addEventListener("click", () => {
+    grid.scrollBy({ left: scrollAmount, behavior: "smooth" });
   });
 })();
-document.addEventListener('DOMContentLoaded', () => { const track = document.querySelector('.skills-track'); if (track) { track.innerHTML += track.innerHTML; } });
+document.addEventListener("DOMContentLoaded", () => {
+  const track = document.querySelector(".skills-track");
+  if (track) {
+    track.innerHTML += track.innerHTML;
+  }
+});
 
 // Skills Slider
-const skillSlideLeft = document.getElementById('skillSlideLeft');
-const skillSlideRight = document.getElementById('skillSlideRight');
-const skillsGrid = document.getElementById('skillsGrid');
+const skillSlideLeft = document.getElementById("skillSlideLeft");
+const skillSlideRight = document.getElementById("skillSlideRight");
+const skillsGrid = document.getElementById("skillsGrid");
 
 if (skillSlideLeft && skillSlideRight && skillsGrid) {
-  skillSlideLeft.addEventListener('click', () => {
-    skillsGrid.scrollBy({ left: -340, behavior: 'smooth' });
+  skillSlideLeft.addEventListener("click", () => {
+    skillsGrid.scrollBy({ left: -340, behavior: "smooth" });
   });
 
-  skillSlideRight.addEventListener('click', () => {
-    skillsGrid.scrollBy({ left: 340, behavior: 'smooth' });
+  skillSlideRight.addEventListener("click", () => {
+    skillsGrid.scrollBy({ left: 340, behavior: "smooth" });
   });
 }
 
 // Experience Slider
-const expSlideLeft = document.getElementById('expSlideLeft');
-const expSlideRight = document.getElementById('expSlideRight');
-const experienceGrid = document.getElementById('experienceGrid');
+const expSlideLeft = document.getElementById("expSlideLeft");
+const expSlideRight = document.getElementById("expSlideRight");
+const experienceGrid = document.getElementById("experienceGrid");
 
 if (expSlideLeft && expSlideRight && experienceGrid) {
-  expSlideLeft.addEventListener('click', () => {
-    experienceGrid.scrollBy({ left: -470, behavior: 'smooth' });
+  expSlideLeft.addEventListener("click", () => {
+    experienceGrid.scrollBy({ left: -470, behavior: "smooth" });
   });
 
-  expSlideRight.addEventListener('click', () => {
-    experienceGrid.scrollBy({ left: 470, behavior: 'smooth' });
+  expSlideRight.addEventListener("click", () => {
+    experienceGrid.scrollBy({ left: 470, behavior: "smooth" });
   });
 }
+
+/* ── 21. PWA INSTALLATION ── */
+let deferredPrompt;
+const installAppBtn = document.getElementById('installAppBtn');
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  // Prevent the mini-infobar from appearing on mobile
+  e.preventDefault();
+  // Stash the event so it can be triggered later.
+  deferredPrompt = e;
+  // Update UI notify the user they can install the PWA
+  if (installAppBtn) {
+    installAppBtn.style.display = 'inline-block';
+  }
+});
+
+if (installAppBtn) {
+  installAppBtn.addEventListener('click', async () => {
+    // Hide the app provided install promotion
+    installAppBtn.style.display = 'none';
+    // Show the install prompt
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      // Wait for the user to respond to the prompt
+      const { outcome } = await deferredPrompt.userChoice;
+      console.log(`User response to the install prompt: ${outcome}`);
+      // We've used the prompt, and can't use it again, throw it away
+      deferredPrompt = null;
+    }
+  });
+}
+
+window.addEventListener('appinstalled', () => {
+  // Hide the app-provided install promotion
+  if (installAppBtn) {
+    installAppBtn.style.display = 'none';
+  }
+  // Clear the deferredPrompt so it can be garbage collected
+  deferredPrompt = null;
+  console.log('PWA was installed');
+});
